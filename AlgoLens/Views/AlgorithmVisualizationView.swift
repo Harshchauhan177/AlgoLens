@@ -12,6 +12,23 @@ struct AlgorithmVisualizationView: View {
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
+        Group {
+            // Route to specific algorithm visualization if available
+            if algorithm.name == "Linear Search" {
+                LinearSearchVisualizationView()
+            } else {
+                // Placeholder for other algorithms
+                AlgorithmPlaceholderView(algorithm: algorithm)
+            }
+        }
+    }
+}
+
+// MARK: - Algorithm Placeholder View
+struct AlgorithmPlaceholderView: View {
+    let algorithm: Algorithm
+    
+    var body: some View {
         ZStack {
             // Background Gradient
             LinearGradient(
