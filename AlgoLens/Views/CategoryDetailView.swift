@@ -12,6 +12,23 @@ struct CategoryDetailView: View {
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
+        Group {
+            // Route to specific category screen if available
+            if category.name == "Searching Algorithms" {
+                SearchingAlgorithmsView()
+            } else {
+                // Placeholder for other categories
+                CategoryPlaceholderView(category: category)
+            }
+        }
+    }
+}
+
+// MARK: - Category Placeholder View
+struct CategoryPlaceholderView: View {
+    let category: AlgorithmCategory
+    
+    var body: some View {
         ZStack {
             // Background Gradient
             LinearGradient(
