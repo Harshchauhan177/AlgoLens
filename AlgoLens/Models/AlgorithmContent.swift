@@ -16,6 +16,29 @@ enum ProgrammingLanguage: String, CaseIterable {
     case python = "Python"
     case swift = "Swift"
     case javascript = "JavaScript"
+    
+    var displayName: String {
+        return self.rawValue
+    }
+    
+    var icon: String? {
+        switch self {
+        case .pseudocode:
+            return "doc.text"
+        case .c:
+            return "c.circle"
+        case .cpp:
+            return "c.circle.fill"
+        case .java:
+            return "cup.and.saucer"
+        case .python:
+            return "snake"
+        case .swift:
+            return "swift"
+        case .javascript:
+            return "j.circle"
+        }
+    }
 }
 
 // MARK: - Algorithm Content Model
