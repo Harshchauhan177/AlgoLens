@@ -10,6 +10,7 @@ import SwiftUI
 struct LinearSearchVisualizationView: View {
     @StateObject private var viewModel = LinearSearchViewModel()
     @FocusState private var isInputFocused: Bool
+    @State private var showQuiz = false
     
     var body: some View {
         ZStack {
@@ -200,6 +201,33 @@ struct LinearSearchVisualizationView: View {
                                 viewModel.reset()
                             }
                         }
+                        
+                        // Take Quiz Button (shown when completed)
+                        if viewModel.isCompleted {
+                            Button(action: {
+                                showQuiz = true
+                            }) {
+                                HStack(spacing: Theme.Spacing.small) {
+                                    Image(systemName: "questionmark.circle.fill")
+                                        .font(.system(size: 18, weight: .semibold))
+                                    Text("Take Quiz")
+                                        .font(.system(size: 18, weight: .semibold, design: .rounded))
+                                }
+                                .foregroundColor(.white)
+                                .frame(maxWidth: .infinity)
+                                .padding(.vertical, Theme.Spacing.medium + 2)
+                                .background(
+                                    LinearGradient(
+                                        colors: [Color.pink, Color.purple],
+                                        startPoint: .leading,
+                                        endPoint: .trailing
+                                    )
+                                )
+                                .cornerRadius(Theme.CornerRadius.large)
+                                .shadow(color: Color.pink.opacity(0.4), radius: 15, x: 0, y: 8)
+                            }
+                            .transition(.scale.combined(with: .opacity))
+                        }
                     }
                     .padding(.horizontal, Theme.Spacing.large)
                     .padding(.bottom, Theme.Spacing.large)
@@ -211,6 +239,15 @@ struct LinearSearchVisualizationView: View {
         }
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle("Linear Search")
+        .navigationDestination(isPresented: $showQuiz) {
+            QuizView(algorithm: Algorithm(
+                name: "Linear Search",
+                description: "Search elements one by one",
+                icon: "arrow.forward.circle.fill",
+                complexity: Algorithm.Complexity(time: "O(n)", space: "O(1)"),
+                category: AlgorithmCategory.allCategories[0]
+            ))
+        }
     }
 }
 
