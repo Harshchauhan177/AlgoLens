@@ -143,6 +143,8 @@ struct AlgorithmDetailView: View {
             // Navigate to visualization screen
             if viewModel.algorithm.name == "Linear Search" {
                 LinearSearchVisualizationView()
+            } else if viewModel.algorithm.name == "Binary Search" {
+                BinarySearchVisualizationView()
             } else {
                 AlgorithmPlaceholderView(algorithm: viewModel.algorithm)
             }
