@@ -255,15 +255,14 @@ struct FeaturePreviewCard: View {
     }
 }
 
-#Preview {
-    NavigationStack {
-        CategoryDetailView(
-            category: AlgorithmCategory(
-                name: "Sorting Algorithms",
-                description: "Bubble, Quick, Merge, Heap, and more",
-                icon: "arrow.up.arrow.down.circle.fill",
-                color: .purple
-            )
-        )
+#Preview("Category Detail Placeholder") {
+    let sampleCategory = AlgorithmCategory(
+        name: "Searching Algorithms",
+        description: "Algorithms that operate on graphs such as BFS, DFS, Dijkstra, and more.",
+        icon: "network",
+        color: .purple
+    )
+    return NavigationStack {
+        CategoryDetailView(category: sampleCategory)
     }
 }
