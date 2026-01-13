@@ -151,6 +151,8 @@ struct AlgorithmDetailView: View {
                 ExponentialSearchView()
             } else if viewModel.algorithm.name == "Interpolation Search" {
                 InterpolationSearchView()
+            } else if viewModel.algorithm.name == "Fibonacci Search" {
+                FibonacciSearchView()
             } else {
                 AlgorithmPlaceholderView(algorithm: viewModel.algorithm)
             }
