@@ -141,6 +141,7 @@ struct AlgorithmDetailView: View {
         .navigationBarTitleDisplayMode(.large)
         .navigationDestination(isPresented: $viewModel.showVisualization) {
             // Navigate to visualization screen
+            // Searching Algorithms
             if viewModel.algorithm.name == "Linear Search" {
                 LinearSearchVisualizationView()
             } else if viewModel.algorithm.name == "Binary Search" {
@@ -153,6 +154,22 @@ struct AlgorithmDetailView: View {
                 InterpolationSearchView()
             } else if viewModel.algorithm.name == "Fibonacci Search" {
                 FibonacciSearchView()
+            }
+            // Sorting Algorithms
+            else if viewModel.algorithm.name == "Bubble Sort" {
+                BubbleSortVisualizationView()
+            } else if viewModel.algorithm.name == "Selection Sort" {
+                SelectionSortVisualizationView()
+            } else if viewModel.algorithm.name == "Insertion Sort" {
+                InsertionSortVisualizationView()
+            } else if viewModel.algorithm.name == "Merge Sort" {
+                MergeSortVisualizationView()
+            } else if viewModel.algorithm.name == "Quick Sort" {
+                QuickSortVisualizationView()
+            } else if viewModel.algorithm.name == "Heap Sort" {
+                HeapSortVisualizationView()
+            } else if viewModel.algorithm.name == "Counting Sort" {
+                CountingSortVisualizationView()
             } else {
                 AlgorithmPlaceholderView(algorithm: viewModel.algorithm)
             }

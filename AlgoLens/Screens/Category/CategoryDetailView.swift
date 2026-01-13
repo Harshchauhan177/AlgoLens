@@ -16,6 +16,8 @@ struct CategoryDetailView: View {
             // Route to specific category screen if available
             if category.name == "Searching Algorithms" {
                 SearchingAlgorithmsView()
+            } else if category.name == "Sorting Algorithms" {
+                SortingAlgorithmsView()
             } else {
                 // Placeholder for other categories
                 CategoryPlaceholderView(category: category)

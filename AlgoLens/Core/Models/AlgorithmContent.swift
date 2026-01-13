@@ -81,6 +81,7 @@ struct AlgorithmContent {
 // MARK: - Content Data
 extension AlgorithmContent {
     static func content(for algorithm: Algorithm) -> AlgorithmContent {
+        // Searching Algorithms
         switch algorithm.name {
         case "Linear Search":
             return linearSearchContent(algorithm: algorithm)
@@ -94,6 +95,23 @@ extension AlgorithmContent {
             return exponentialSearchContent(algorithm: algorithm)
         case "Fibonacci Search":
             return fibonacciSearchContent(algorithm: algorithm)
+        
+        // Sorting Algorithms
+        case "Bubble Sort":
+            return bubbleSortContent(algorithm: algorithm)
+        case "Selection Sort":
+            return selectionSortContent(algorithm: algorithm)
+        case "Insertion Sort":
+            return insertionSortContent(algorithm: algorithm)
+        case "Merge Sort":
+            return mergeSortContent(algorithm: algorithm)
+        case "Quick Sort":
+            return quickSortContent(algorithm: algorithm)
+        case "Heap Sort":
+            return heapSortContent(algorithm: algorithm)
+        case "Counting Sort":
+            return countingSortContent(algorithm: algorithm)
+            
         default:
             return defaultContent(algorithm: algorithm)
         }

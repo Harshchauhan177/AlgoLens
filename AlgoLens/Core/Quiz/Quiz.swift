@@ -84,6 +84,7 @@ struct QuizResult {
 // MARK: - Quiz Content Repository
 extension Quiz {
     static func quiz(for algorithm: Algorithm) -> Quiz {
+        // Searching Algorithms
         switch algorithm.name {
         case "Linear Search":
             return linearSearchQuiz(algorithm: algorithm)
@@ -97,6 +98,23 @@ extension Quiz {
             return exponentialSearchQuiz(algorithm: algorithm)
         case "Fibonacci Search":
             return fibonacciSearchQuiz(algorithm: algorithm)
+            
+        // Sorting Algorithms
+        case "Bubble Sort":
+            return bubbleSortQuiz(algorithm: algorithm)
+        case "Selection Sort":
+            return selectionSortQuiz(algorithm: algorithm)
+        case "Insertion Sort":
+            return insertionSortQuiz(algorithm: algorithm)
+        case "Merge Sort":
+            return mergeSortQuiz(algorithm: algorithm)
+        case "Quick Sort":
+            return quickSortQuiz(algorithm: algorithm)
+        case "Heap Sort":
+            return heapSortQuiz(algorithm: algorithm)
+        case "Counting Sort":
+            return countingSortQuiz(algorithm: algorithm)
+            
         default:
             return defaultQuiz(algorithm: algorithm)
         }
