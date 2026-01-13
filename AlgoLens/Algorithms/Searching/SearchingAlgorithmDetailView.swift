@@ -147,6 +147,8 @@ struct AlgorithmDetailView: View {
                 BinarySearchVisualizationView()
             } else if viewModel.algorithm.name == "Jump Search" {
                 JumpSearchView()
+            } else if viewModel.algorithm.name == "Exponential Search" {
+                ExponentialSearchView()
             } else if viewModel.algorithm.name == "Interpolation Search" {
                 InterpolationSearchView()
             } else {
