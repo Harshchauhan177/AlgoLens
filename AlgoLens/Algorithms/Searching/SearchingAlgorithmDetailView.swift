@@ -145,6 +145,8 @@ struct AlgorithmDetailView: View {
                 LinearSearchVisualizationView()
             } else if viewModel.algorithm.name == "Binary Search" {
                 BinarySearchVisualizationView()
+            } else if viewModel.algorithm.name == "Interpolation Search" {
+                InterpolationSearchView()
             } else {
                 AlgorithmPlaceholderView(algorithm: viewModel.algorithm)
             }
