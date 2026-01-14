@@ -130,6 +130,24 @@ extension Quiz {
             return dutchNationalFlagQuiz(algorithm: algorithm)
         case "Subarray Sum":
             return subarraySumQuiz(algorithm: algorithm)
+        
+        // String Algorithms
+        case "Naive String Matching":
+            return naiveStringMatchingQuiz(algorithm: algorithm)
+        case "KMP Algorithm":
+            return kmpQuiz(algorithm: algorithm)
+        case "Rabin-Karp":
+            return rabinKarpQuiz(algorithm: algorithm)
+        case "Z Algorithm":
+            return zAlgorithmQuiz(algorithm: algorithm)
+        case "Longest Palindromic Substring":
+            return longestPalindromicSubstringQuiz(algorithm: algorithm)
+        case "Anagram Check":
+            return anagramCheckQuiz(algorithm: algorithm)
+        case "String Rotation":
+            return stringRotationQuiz(algorithm: algorithm)
+        case "Subsequence Check":
+            return subsequenceCheckQuiz(algorithm: algorithm)
             
         default:
             return defaultQuiz(algorithm: algorithm)

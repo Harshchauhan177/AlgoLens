@@ -187,6 +187,24 @@ struct AlgorithmDetailView: View {
             } else if viewModel.algorithm.name == "Subarray Sum" {
                 SubarraySumVisualizationView()
             }
+            // String Algorithms
+            else if viewModel.algorithm.name == "Naive String Matching" {
+                NaiveStringMatchingVisualizationView()
+            } else if viewModel.algorithm.name == "KMP Algorithm" {
+                KMPVisualizationView()
+            } else if viewModel.algorithm.name == "Rabin-Karp" {
+                RabinKarpVisualizationView()
+            } else if viewModel.algorithm.name == "Z Algorithm" {
+                ZAlgorithmVisualizationView()
+            } else if viewModel.algorithm.name == "Longest Palindromic Substring" {
+                LongestPalindromicSubstringVisualizationView()
+            } else if viewModel.algorithm.name == "Anagram Check" {
+                AnagramCheckVisualizationView()
+            } else if viewModel.algorithm.name == "String Rotation" {
+                StringRotationVisualizationView()
+            } else if viewModel.algorithm.name == "Subsequence Check" {
+                SubsequenceCheckVisualizationView()
+            }
             else {
                 AlgorithmPlaceholderView(algorithm: viewModel.algorithm)
             }

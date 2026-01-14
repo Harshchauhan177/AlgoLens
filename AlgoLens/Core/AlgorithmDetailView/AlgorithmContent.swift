@@ -127,6 +127,24 @@ extension AlgorithmContent {
             return dutchNationalFlagContent(algorithm: algorithm)
         case "Subarray Sum":
             return subarraySumContent(algorithm: algorithm)
+        
+        // String Algorithms
+//        case "Naive String Matching":
+//            return naiveStringMatchingContent(algorithm: algorithm)
+//        case "KMP Algorithm":
+//            return kmpContent(algorithm: algorithm)
+//        case "Rabin-Karp":
+//            return rabinKarpContent(algorithm: algorithm)
+//        case "Z Algorithm":
+//            return zAlgorithmContent(algorithm: algorithm)
+//        case "Longest Palindromic Substring":
+//            return longestPalindromicSubstringContent(algorithm: algorithm)
+//        case "Anagram Check":
+//            return anagramCheckContent(algorithm: algorithm)
+//        case "String Rotation":
+//            return stringRotationContent(algorithm: algorithm)
+//        case "Subsequence Check":
+//            return subsequenceCheckContent(algorithm: algorithm)
             
         default:
             return defaultContent(algorithm: algorithm)
