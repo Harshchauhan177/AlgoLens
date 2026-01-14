@@ -731,113 +731,14 @@ struct ExampleTabView: View {
                     Spacer()
                 }
                 
-                // Input Cards Container
-                VStack(spacing: Theme.Spacing.medium) {
-                    // Array Card
-                    VStack(alignment: .leading, spacing: Theme.Spacing.small + 4) {
-                        HStack {
-                            Image(systemName: "square.grid.3x3.fill")
-                                .foregroundColor(.blue.opacity(0.8))
-                                .font(.system(size: 15, weight: .semibold))
-                            Text("Array")
-                                .font(.system(size: 14, weight: .semibold))
-                                .foregroundColor(Theme.Colors.secondaryText)
-                            Spacer()
-                        }
-                        
-                        // Array Elements Display
-                        ScrollView(.horizontal, showsIndicators: false) {
-                            HStack(spacing: 10) {
-                                ForEach(Array(content.example.inputArray.enumerated()), id: \.offset) { index, element in
-                                    VStack(spacing: 6) {
-                                        Text("\(element)")
-                                            .font(.system(size: 18, weight: .bold, design: .monospaced))
-                                            .foregroundColor(Theme.Colors.primaryText)
-                                            .frame(minWidth: 48, minHeight: 48)
-                                            .background(
-                                                LinearGradient(
-                                                    colors: [
-                                                        Color.blue.opacity(0.08),
-                                                        Color.blue.opacity(0.12)
-                                                    ],
-                                                    startPoint: .topLeading,
-                                                    endPoint: .bottomTrailing
-                                                )
-                                            )
-                                            .cornerRadius(10)
-                                            .overlay(
-                                                RoundedRectangle(cornerRadius: 10)
-                                                    .stroke(Color.blue.opacity(0.25), lineWidth: 2)
-                                            )
-                                        
-                                        Text("[\(index)]")
-                                            .font(.system(size: 11, weight: .medium, design: .monospaced))
-                                            .foregroundColor(Theme.Colors.secondaryText.opacity(0.7))
-                                    }
-                                }
-                            }
-                            .padding(.vertical, 4)
-                            .padding(.horizontal, 2)
-                        }
-                    }
-                    .padding(Theme.Spacing.medium + 2)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .background(Color.white.opacity(0.95))
-                    .cornerRadius(Theme.CornerRadius.medium)
-                    .shadow(color: Color.blue.opacity(0.08), radius: 8, x: 0, y: 3)
-                    
-                    // Target Card
-                    HStack {
-                        VStack(alignment: .leading, spacing: 10) {
-                            HStack(spacing: 8) {
-                                Image(systemName: "target")
-                                    .foregroundColor(.purple)
-                                    .font(.system(size: 15, weight: .semibold))
-                                Text("Target Value")
-                                    .font(.system(size: 14, weight: .semibold))
-                                    .foregroundColor(Theme.Colors.secondaryText)
-                            }
-                            
-                            Text("\(content.example.target)")
-                                .font(.system(size: 28, weight: .heavy, design: .monospaced))
-                                .foregroundColor(.purple)
-                        }
-                        
-                        Spacer()
-                        
-                        // Visual Target Icon
-                        ZStack {
-                            Circle()
-                                .fill(
-                                    LinearGradient(
-                                        colors: [
-                                            Color.purple.opacity(0.12),
-                                            Color.purple.opacity(0.2)
-                                        ],
-                                        startPoint: .topLeading,
-                                        endPoint: .bottomTrailing
-                                    )
-                                )
-                                .frame(width: 64, height: 64)
-                            
-                            Image(systemName: "scope")
-                                .font(.system(size: 30, weight: .semibold))
-                                .foregroundColor(.purple)
-                        }
-                    }
-                    .padding(Theme.Spacing.medium + 2)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .background(Color.white.opacity(0.95))
-                    .cornerRadius(Theme.CornerRadius.medium)
-                    .shadow(color: Color.purple.opacity(0.08), radius: 8, x: 0, y: 3)
+                // Input Cards Container - Different for String vs Array algorithms
+                if content.example.isStringAlgorithm {
+                    // String Algorithm Input
+                    StringAlgorithmInputView(example: content.example)
+                } else {
+                    // Array Algorithm Input
+                    ArrayAlgorithmInputView(example: content.example)
                 }
-                .padding(Theme.Spacing.medium)
-                .background(Color.blue.opacity(0.03))
-                .cornerRadius(Theme.CornerRadius.large)
-                .overlay(
-                    RoundedRectangle(cornerRadius: Theme.CornerRadius.large)
-                        .stroke(Color.blue.opacity(0.15), lineWidth: 1.5)
-                )
             }
             
             // Flow Arrow
@@ -1007,6 +908,220 @@ struct ExampleTabView: View {
         }
         .padding(Theme.Spacing.large)
         .padding(.bottom, Theme.Spacing.extraLarge)
+    }
+}
+
+// MARK: - String Algorithm Input View
+struct StringAlgorithmInputView: View {
+    let example: AlgorithmContent.AlgorithmExample
+    
+    var body: some View {
+        VStack(spacing: Theme.Spacing.medium) {
+            // Text Card
+            VStack(alignment: .leading, spacing: Theme.Spacing.small + 4) {
+                HStack {
+                    Image(systemName: "doc.text.fill")
+                        .foregroundColor(.blue.opacity(0.8))
+                        .font(.system(size: 15, weight: .semibold))
+                    Text("Text")
+                        .font(.system(size: 14, weight: .semibold))
+                        .foregroundColor(Theme.Colors.secondaryText)
+                    Spacer()
+                }
+                
+                Text(example.text ?? "")
+                    .font(.system(size: 16, weight: .bold, design: .monospaced))
+                    .foregroundColor(Theme.Colors.primaryText)
+                    .padding(Theme.Spacing.medium)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .background(
+                        LinearGradient(
+                            colors: [
+                                Color.blue.opacity(0.08),
+                                Color.blue.opacity(0.12)
+                            ],
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        )
+                    )
+                    .cornerRadius(10)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(Color.blue.opacity(0.25), lineWidth: 2)
+                    )
+            }
+            .padding(Theme.Spacing.medium + 2)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .background(Color.white.opacity(0.95))
+            .cornerRadius(Theme.CornerRadius.medium)
+            .shadow(color: Color.blue.opacity(0.08), radius: 8, x: 0, y: 3)
+            
+            // Pattern Card
+            HStack {
+                VStack(alignment: .leading, spacing: 10) {
+                    HStack(spacing: 8) {
+                        Image(systemName: "text.magnifyingglass")
+                            .foregroundColor(.purple)
+                            .font(.system(size: 15, weight: .semibold))
+                        Text("Pattern")
+                            .font(.system(size: 14, weight: .semibold))
+                            .foregroundColor(Theme.Colors.secondaryText)
+                    }
+                    
+                    Text(example.pattern ?? "")
+                        .font(.system(size: 20, weight: .heavy, design: .monospaced))
+                        .foregroundColor(.purple)
+                }
+                
+                Spacer()
+                
+                // Visual Pattern Icon
+                ZStack {
+                    Circle()
+                        .fill(
+                            LinearGradient(
+                                colors: [
+                                    Color.purple.opacity(0.12),
+                                    Color.purple.opacity(0.2)
+                                ],
+                                startPoint: .topLeading,
+                                endPoint: .bottomTrailing
+                            )
+                        )
+                        .frame(width: 64, height: 64)
+                    
+                    Image(systemName: "quote.bubble.fill")
+                        .font(.system(size: 30, weight: .semibold))
+                        .foregroundColor(.purple)
+                }
+            }
+            .padding(Theme.Spacing.medium + 2)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .background(Color.white.opacity(0.95))
+            .cornerRadius(Theme.CornerRadius.medium)
+            .shadow(color: Color.purple.opacity(0.08), radius: 8, x: 0, y: 3)
+        }
+        .padding(Theme.Spacing.medium)
+        .background(Color.blue.opacity(0.03))
+        .cornerRadius(Theme.CornerRadius.large)
+        .overlay(
+            RoundedRectangle(cornerRadius: Theme.CornerRadius.large)
+                .stroke(Color.blue.opacity(0.15), lineWidth: 1.5)
+        )
+    }
+}
+
+// MARK: - Array Algorithm Input View
+struct ArrayAlgorithmInputView: View {
+    let example: AlgorithmContent.AlgorithmExample
+    
+    var body: some View {
+        VStack(spacing: Theme.Spacing.medium) {
+            // Array Card
+            VStack(alignment: .leading, spacing: Theme.Spacing.small + 4) {
+                HStack {
+                    Image(systemName: "square.grid.3x3.fill")
+                        .foregroundColor(.blue.opacity(0.8))
+                        .font(.system(size: 15, weight: .semibold))
+                    Text("Array")
+                        .font(.system(size: 14, weight: .semibold))
+                        .foregroundColor(Theme.Colors.secondaryText)
+                    Spacer()
+                }
+                
+                // Array Elements Display
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 10) {
+                        ForEach(Array(example.inputArray.enumerated()), id: \.offset) { index, element in
+                            VStack(spacing: 6) {
+                                Text("\(element)")
+                                    .font(.system(size: 18, weight: .bold, design: .monospaced))
+                                    .foregroundColor(Theme.Colors.primaryText)
+                                    .frame(minWidth: 48, minHeight: 48)
+                                    .background(
+                                        LinearGradient(
+                                            colors: [
+                                                Color.blue.opacity(0.08),
+                                                Color.blue.opacity(0.12)
+                                            ],
+                                            startPoint: .topLeading,
+                                            endPoint: .bottomTrailing
+                                        )
+                                    )
+                                    .cornerRadius(10)
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 10)
+                                            .stroke(Color.blue.opacity(0.25), lineWidth: 2)
+                                    )
+                                
+                                Text("[\(index)]")
+                                    .font(.system(size: 11, weight: .medium, design: .monospaced))
+                                    .foregroundColor(Theme.Colors.secondaryText.opacity(0.7))
+                            }
+                        }
+                    }
+                    .padding(.vertical, 4)
+                    .padding(.horizontal, 2)
+                }
+            }
+            .padding(Theme.Spacing.medium + 2)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .background(Color.white.opacity(0.95))
+            .cornerRadius(Theme.CornerRadius.medium)
+            .shadow(color: Color.blue.opacity(0.08), radius: 8, x: 0, y: 3)
+            
+            // Target Card
+            HStack {
+                VStack(alignment: .leading, spacing: 10) {
+                    HStack(spacing: 8) {
+                        Image(systemName: "target")
+                            .foregroundColor(.purple)
+                            .font(.system(size: 15, weight: .semibold))
+                        Text("Target Value")
+                            .font(.system(size: 14, weight: .semibold))
+                            .foregroundColor(Theme.Colors.secondaryText)
+                    }
+                    
+                    Text("\(example.target)")
+                        .font(.system(size: 28, weight: .heavy, design: .monospaced))
+                        .foregroundColor(.purple)
+                }
+                
+                Spacer()
+                
+                // Visual Target Icon
+                ZStack {
+                    Circle()
+                        .fill(
+                            LinearGradient(
+                                colors: [
+                                    Color.purple.opacity(0.12),
+                                    Color.purple.opacity(0.2)
+                                ],
+                                startPoint: .topLeading,
+                                endPoint: .bottomTrailing
+                            )
+                        )
+                        .frame(width: 64, height: 64)
+                    
+                    Image(systemName: "scope")
+                        .font(.system(size: 30, weight: .semibold))
+                        .foregroundColor(.purple)
+                }
+            }
+            .padding(Theme.Spacing.medium + 2)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .background(Color.white.opacity(0.95))
+            .cornerRadius(Theme.CornerRadius.medium)
+            .shadow(color: Color.purple.opacity(0.08), radius: 8, x: 0, y: 3)
+        }
+        .padding(Theme.Spacing.medium)
+        .background(Color.blue.opacity(0.03))
+        .cornerRadius(Theme.CornerRadius.large)
+        .overlay(
+            RoundedRectangle(cornerRadius: Theme.CornerRadius.large)
+                .stroke(Color.blue.opacity(0.15), lineWidth: 1.5)
+        )
     }
 }
 

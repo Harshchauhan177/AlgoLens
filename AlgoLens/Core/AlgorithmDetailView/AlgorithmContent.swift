@@ -56,6 +56,35 @@ struct AlgorithmContent {
         let target: Int
         let expectedOutput: String
         let explanation: String
+        
+        // Optional fields for string algorithms
+        var text: String?
+        var pattern: String?
+        
+        // Initializer for array-based algorithms
+        init(inputArray: [Int], target: Int, expectedOutput: String, explanation: String) {
+            self.inputArray = inputArray
+            self.target = target
+            self.expectedOutput = expectedOutput
+            self.explanation = explanation
+            self.text = nil
+            self.pattern = nil
+        }
+        
+        // Initializer for string-based algorithms
+        init(text: String, pattern: String, expectedOutput: String, explanation: String) {
+            self.inputArray = []
+            self.target = 0
+            self.expectedOutput = expectedOutput
+            self.explanation = explanation
+            self.text = text
+            self.pattern = pattern
+        }
+        
+        // Computed property to check if it's a string algorithm
+        var isStringAlgorithm: Bool {
+            return text != nil && pattern != nil
+        }
     }
     
     struct AlgorithmStep {
@@ -129,22 +158,8 @@ extension AlgorithmContent {
             return subarraySumContent(algorithm: algorithm)
         
         // String Algorithms
-//        case "Naive String Matching":
-//            return naiveStringMatchingContent(algorithm: algorithm)
-//        case "KMP Algorithm":
-//            return kmpContent(algorithm: algorithm)
-//        case "Rabin-Karp":
-//            return rabinKarpContent(algorithm: algorithm)
-//        case "Z Algorithm":
-//            return zAlgorithmContent(algorithm: algorithm)
-//        case "Longest Palindromic Substring":
-//            return longestPalindromicSubstringContent(algorithm: algorithm)
-//        case "Anagram Check":
-//            return anagramCheckContent(algorithm: algorithm)
-//        case "String Rotation":
-//            return stringRotationContent(algorithm: algorithm)
-//        case "Subsequence Check":
-//            return subsequenceCheckContent(algorithm: algorithm)
+        case "Naive String Matching":
+            return naiveStringMatchingContent(algorithm: algorithm)
             
         default:
             return defaultContent(algorithm: algorithm)

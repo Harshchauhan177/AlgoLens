@@ -70,9 +70,20 @@ struct RabinKarpVisualizationView: View {
                     }
                     
                     StringVisualizationView(
-                        text: viewModel.text, pattern: viewModel.pattern,
-                        currentIndex: viewModel.currentIndex, patternIndex: -1,
-                        matches: viewModel.matchedIndices, isMatching: viewModel.isMatching
+                        text: viewModel.text,
+                        pattern: viewModel.pattern,
+                        currentIndex: viewModel.currentIndex,
+                        patternIndex: -1,
+                        matchedIndices: viewModel.matchedIndices,
+                        isMatching: viewModel.isMatching,
+                        characterState: { index in
+                            if viewModel.matchedIndices.contains(index) {
+                                return .matched
+                            } else if viewModel.isSearching && index == viewModel.currentIndex {
+                                return .current
+                            }
+                            return .normal
+                        }
                     )
                     .padding(.horizontal, Theme.Spacing.large)
                     

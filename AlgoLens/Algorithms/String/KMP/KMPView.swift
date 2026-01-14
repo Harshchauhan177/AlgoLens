@@ -80,8 +80,16 @@ struct KMPVisualizationView: View {
                         pattern: viewModel.pattern,
                         currentIndex: viewModel.currentTextIndex,
                         patternIndex: viewModel.currentPatternIndex,
-                        matches: viewModel.matchedIndices,
-                        isMatching: viewModel.isMatching
+                        matchedIndices: viewModel.matchedIndices,
+                        isMatching: viewModel.isMatching,
+                        characterState: { index in
+                            if viewModel.matchedIndices.contains(index) {
+                                return .matched
+                            } else if viewModel.isSearching && index == viewModel.currentTextIndex {
+                                return .current
+                            }
+                            return .normal
+                        }
                     )
                     .padding(.horizontal, Theme.Spacing.large)
                     
