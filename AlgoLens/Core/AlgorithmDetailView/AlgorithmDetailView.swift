@@ -170,7 +170,24 @@ struct AlgorithmDetailView: View {
                 HeapSortVisualizationView()
             } else if viewModel.algorithm.name == "Counting Sort" {
                 CountingSortVisualizationView()
-            } else {
+            }
+            // Array Algorithms
+            else if viewModel.algorithm.name == "Two Pointer" {
+                TwoPointerVisualizationView()
+            } else if viewModel.algorithm.name == "Sliding Window" {
+                SlidingWindowVisualizationView()
+            } else if viewModel.algorithm.name == "Prefix Sum" {
+                PrefixSumVisualizationView()
+            } else if viewModel.algorithm.name == "Kadane's Algorithm" {
+                KadaneVisualizationView()
+            } else if viewModel.algorithm.name == "Moore's Voting" {
+                MooreVotingVisualizationView()
+            } else if viewModel.algorithm.name == "Dutch National Flag" {
+                DutchNationalFlagVisualizationView()
+            } else if viewModel.algorithm.name == "Subarray Sum" {
+                SubarraySumVisualizationView()
+            }
+            else {
                 AlgorithmPlaceholderView(algorithm: viewModel.algorithm)
             }
         }

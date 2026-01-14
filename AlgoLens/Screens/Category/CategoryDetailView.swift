@@ -18,6 +18,8 @@ struct CategoryDetailView: View {
                 SearchingAlgorithmsView()
             } else if category.name == "Sorting Algorithms" {
                 SortingAlgorithmsView()
+            } else if category.name == "Array Algorithms" {
+                ArrayAlgorithmsView()
             } else {
                 // Placeholder for other categories
                 CategoryPlaceholderView(category: category)

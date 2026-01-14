@@ -111,6 +111,22 @@ extension AlgorithmContent {
             return heapSortContent(algorithm: algorithm)
         case "Counting Sort":
             return countingSortContent(algorithm: algorithm)
+        
+        // Array Algorithms
+        case "Two Pointer":
+            return twoPointerContent(algorithm: algorithm)
+        case "Sliding Window":
+            return slidingWindowContent(algorithm: algorithm)
+        case "Prefix Sum":
+            return prefixSumContent(algorithm: algorithm)
+        case "Kadane's Algorithm":
+            return kadaneContent(algorithm: algorithm)
+        case "Moore's Voting":
+            return mooreVotingContent(algorithm: algorithm)
+        case "Dutch National Flag":
+            return dutchNationalFlagContent(algorithm: algorithm)
+        case "Subarray Sum":
+            return subarraySumContent(algorithm: algorithm)
             
         default:
             return defaultContent(algorithm: algorithm)
