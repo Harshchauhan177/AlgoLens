@@ -114,6 +114,22 @@ extension Quiz {
             return heapSortQuiz(algorithm: algorithm)
         case "Counting Sort":
             return countingSortQuiz(algorithm: algorithm)
+        
+        // Array Algorithms
+        case "Two Pointer":
+            return twoPointerQuiz(algorithm: algorithm)
+        case "Sliding Window":
+            return slidingWindowQuiz(algorithm: algorithm)
+        case "Prefix Sum":
+            return prefixSumQuiz(algorithm: algorithm)
+        case "Kadane's Algorithm":
+            return kadaneQuiz(algorithm: algorithm)
+        case "Moore's Voting":
+            return mooreVotingQuiz(algorithm: algorithm)
+        case "Dutch National Flag":
+            return dutchNationalFlagQuiz(algorithm: algorithm)
+        case "Subarray Sum":
+            return subarraySumQuiz(algorithm: algorithm)
             
         default:
             return defaultQuiz(algorithm: algorithm)
