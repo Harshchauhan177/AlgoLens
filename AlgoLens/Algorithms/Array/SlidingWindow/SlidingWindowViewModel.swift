@@ -146,6 +146,11 @@ class SlidingWindowViewModel: ObservableObject {
                 if isCompleted { break }
             }
             await MainActor.run {
+                // Ensure isCompleted is set to true
+                if !isCompleted {
+                    isCompleted = true
+                    finalResult = "Maximum sum: \(maxSum) at window [\(maxWindowStart)..\(maxWindowEnd)]"
+                }
                 isAutoRunning = false
                 canReset = true
             }

@@ -127,6 +127,11 @@ class MooreVotingViewModel: ObservableObject {
                 if isCompleted { break }
             }
             await MainActor.run {
+                // Ensure isCompleted is set to true
+                if !isCompleted {
+                    isCompleted = true
+                    finalResult = "Candidate found: \(candidate!). Click 'Verify' to confirm if it's the majority element."
+                }
                 isAutoRunning = false
                 canReset = true
                 canVerify = true

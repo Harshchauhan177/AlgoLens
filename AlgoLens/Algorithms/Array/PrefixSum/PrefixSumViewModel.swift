@@ -130,6 +130,11 @@ class PrefixSumViewModel: ObservableObject {
                 if isCompleted { break }
             }
             await MainActor.run {
+                // Ensure isCompleted is set to true
+                if !isCompleted {
+                    isCompleted = true
+                    finalResult = "Prefix sum array built! Ready for O(1) range queries."
+                }
                 isAutoRunning = false
                 canReset = true
                 canQuery = true

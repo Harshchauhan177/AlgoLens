@@ -133,6 +133,12 @@ class KadaneViewModel: ObservableObject {
                 if isCompleted { break }
             }
             await MainActor.run {
+                // Ensure isCompleted is set to true
+                if !isCompleted {
+                    isCompleted = true
+                    let subarrayElements = Array(array[maxStartIndex...maxEndIndex])
+                    finalResult = "Maximum subarray sum: \(maxSum) from [\(subarrayElements.map { String($0) }.joined(separator: ", "))]"
+                }
                 isAutoRunning = false
                 canReset = true
             }
