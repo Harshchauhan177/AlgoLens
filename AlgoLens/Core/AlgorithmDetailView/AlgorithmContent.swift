@@ -166,8 +166,8 @@ extension AlgorithmContent {
             return rabinKarpContent(algorithm: algorithm)
         case "Z Algorithm":
             return zAlgorithmContent(algorithm: algorithm)
-//        case "Longest Palindromic Substring":
-//            return longestPalindromicSubstringContent(algorithm: algorithm)
+        case "Longest Palindromic Substring":
+            return longestPalindromicSubstringContent(algorithm: algorithm)
 //        case "Anagram Check":
 //            return anagramCheckContent(algorithm: algorithm)
 //        case "String Rotation":
