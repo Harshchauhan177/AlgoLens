@@ -678,14 +678,27 @@ struct ImprovedStringVisualizationView: View {
                                         .shadow(color: shadowColorForChar(at: index), radius: shadowRadiusForChar(at: index), x: 0, y: 4)
                                         .scaleEffect(characterState(index) == .current ? 1.1 : 1.0)
                                 }
-                                .id(index)
+                                .id("text_\(index)")
                             }
                         }
                         .padding(.vertical, 16)
                         .padding(.horizontal, 8)
-                        .onChange(of: currentIndex) { newValue in
-                            withAnimation(.easeInOut(duration: 0.3)) {
-                                proxy.scrollTo(newValue, anchor: .center)
+                    }
+                    .onChange(of: currentIndex) { newValue in
+                        if newValue >= 0 && newValue < text.count {
+                            withAnimation(.easeInOut(duration: 0.4)) {
+                                proxy.scrollTo("text_\(newValue)", anchor: .center)
+                            }
+                        }
+                    }
+                    .onChange(of: patternIndex) { newIndex in
+                        // Also scroll when pattern index changes to keep the current comparison visible
+                        if currentIndex >= 0 && newIndex >= 0 {
+                            let visibleIndex = currentIndex + newIndex
+                            if visibleIndex < text.count {
+                                withAnimation(.easeInOut(duration: 0.3)) {
+                                    proxy.scrollTo("text_\(visibleIndex)", anchor: .center)
+                                }
                             }
                         }
                     }
@@ -725,31 +738,49 @@ struct ImprovedStringVisualizationView: View {
                         .cornerRadius(6)
                 }
                 
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack(spacing: 6) {
-                        ForEach(Array(pattern.enumerated()), id: \.offset) { index, char in
-                            VStack(spacing: 6) {
-                                Text("\(index)")
-                                    .font(.system(size: 11, weight: .semibold, design: .monospaced))
-                                    .foregroundColor(indexColorForPattern(at: index))
-                                
-                                Text(String(char))
-                                    .font(.system(size: 20, weight: .bold, design: .monospaced))
-                                    .foregroundColor(textColorForPattern(at: index))
-                                    .frame(width: 44, height: 50)
-                                    .background(backgroundColorForPattern(at: index))
-                                    .cornerRadius(12)
-                                    .overlay(
-                                        RoundedRectangle(cornerRadius: 12)
-                                            .stroke(borderColorForPattern(at: index), lineWidth: borderWidthForPattern(at: index))
-                                    )
-                                    .shadow(color: shadowColorForPattern(at: index), radius: shadowRadiusForPattern(at: index), x: 0, y: 4)
-                                    .scaleEffect(index == patternIndex && isMatching ? 1.1 : 1.0)
+                ScrollViewReader { proxy in
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack(spacing: 6) {
+                            ForEach(Array(pattern.enumerated()), id: \.offset) { index, char in
+                                VStack(spacing: 6) {
+                                    Text("\(index)")
+                                        .font(.system(size: 11, weight: .semibold, design: .monospaced))
+                                        .foregroundColor(indexColorForPattern(at: index))
+                                    
+                                    Text(String(char))
+                                        .font(.system(size: 20, weight: .bold, design: .monospaced))
+                                        .foregroundColor(textColorForPattern(at: index))
+                                        .frame(width: 44, height: 50)
+                                        .background(backgroundColorForPattern(at: index))
+                                        .cornerRadius(12)
+                                        .overlay(
+                                            RoundedRectangle(cornerRadius: 12)
+                                                .stroke(borderColorForPattern(at: index), lineWidth: borderWidthForPattern(at: index))
+                                        )
+                                        .shadow(color: shadowColorForPattern(at: index), radius: shadowRadiusForPattern(at: index), x: 0, y: 4)
+                                        .scaleEffect(index == patternIndex && isMatching ? 1.1 : 1.0)
+                                }
+                                .id("pattern_\(index)")
+                            }
+                        }
+                        .padding(.vertical, 16)
+                        .padding(.horizontal, 8)
+                    }
+                    .onChange(of: patternIndex) { newValue in
+                        if newValue >= 0 && newValue < pattern.count {
+                            withAnimation(.easeInOut(duration: 0.4)) {
+                                proxy.scrollTo("pattern_\(newValue)", anchor: .center)
                             }
                         }
                     }
-                    .padding(.vertical, 16)
-                    .padding(.horizontal, 8)
+                    .onAppear {
+                        // Scroll to beginning when view appears
+                        if pattern.count > 0 {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                                proxy.scrollTo("pattern_0", anchor: .leading)
+                            }
+                        }
+                    }
                 }
             }
         }
