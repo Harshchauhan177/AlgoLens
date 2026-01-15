@@ -164,8 +164,8 @@ extension AlgorithmContent {
             return kmpContent(algorithm: algorithm)
         case "Rabin-Karp":
             return rabinKarpContent(algorithm: algorithm)
-//        case "Z Algorithm":
-//            return zAlgorithmContent(algorithm: algorithm)
+        case "Z Algorithm":
+            return zAlgorithmContent(algorithm: algorithm)
 //        case "Longest Palindromic Substring":
 //            return longestPalindromicSubstringContent(algorithm: algorithm)
 //        case "Anagram Check":

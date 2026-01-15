@@ -274,13 +274,55 @@ struct StepInformationPanel: View {
             VStack(spacing: Theme.Spacing.small) {
                 // Current State
                 if !isCompleted {
-                    InfoRow(label: "Current Index", value: "\(currentIndex)", icon: "arrow.right.circle.fill", color: .blue)
-                    
-                    if let value = currentValue {
-                        InfoRow(label: "Current Value", value: "\(value)", icon: "number.circle.fill", color: .blue)
+                    HStack {
+                        Image(systemName: "arrow.right.circle.fill")
+                            .foregroundColor(.blue)
+                            .frame(width: 20)
+                        
+                        Text("Current Index:")
+                            .font(.system(size: 14, weight: .medium))
+                            .foregroundColor(Theme.Colors.secondaryText)
+                        
+                        Spacer()
+                        
+                        Text("\(currentIndex)")
+                            .font(.system(size: 14, weight: .bold, design: .monospaced))
+                            .foregroundColor(.blue)
                     }
                     
-                    InfoRow(label: "Target Value", value: "\(targetValue)", icon: "target", color: .purple)
+                    if let value = currentValue {
+                        HStack {
+                            Image(systemName: "number.circle.fill")
+                                .foregroundColor(.blue)
+                                .frame(width: 20)
+                            
+                            Text("Current Value:")
+                                .font(.system(size: 14, weight: .medium))
+                                .foregroundColor(Theme.Colors.secondaryText)
+                            
+                            Spacer()
+                            
+                            Text("\(value)")
+                                .font(.system(size: 14, weight: .bold, design: .monospaced))
+                                .foregroundColor(.blue)
+                        }
+                    }
+                    
+                    HStack {
+                        Image(systemName: "target")
+                            .foregroundColor(.purple)
+                            .frame(width: 20)
+                        
+                        Text("Target Value:")
+                            .font(.system(size: 14, weight: .medium))
+                            .foregroundColor(Theme.Colors.secondaryText)
+                        
+                        Spacer()
+                        
+                        Text("\(targetValue)")
+                            .font(.system(size: 14, weight: .bold, design: .monospaced))
+                            .foregroundColor(.purple)
+                    }
                     
                     if !comparisonResult.isEmpty {
                         Divider()
@@ -319,32 +361,6 @@ struct StepInformationPanel: View {
             .background(Color.white.opacity(0.9))
             .cornerRadius(Theme.CornerRadius.medium)
             .shadow(color: Color.black.opacity(0.05), radius: 8, x: 0, y: 4)
-        }
-    }
-}
-
-// MARK: - Info Row
-struct InfoRow: View {
-    let label: String
-    let value: String
-    let icon: String
-    let color: Color
-    
-    var body: some View {
-        HStack {
-            Image(systemName: icon)
-                .foregroundColor(color)
-                .frame(width: 20)
-            
-            Text(label + ":")
-                .font(.system(size: 14, weight: .medium))
-                .foregroundColor(Theme.Colors.secondaryText)
-            
-            Spacer()
-            
-            Text(value)
-                .font(.system(size: 14, weight: .bold, design: .monospaced))
-                .foregroundColor(color)
         }
     }
 }
