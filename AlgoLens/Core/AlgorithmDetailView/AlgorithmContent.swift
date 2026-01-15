@@ -162,8 +162,8 @@ extension AlgorithmContent {
             return naiveStringMatchingContent(algorithm: algorithm)
         case "KMP Algorithm":
             return kmpContent(algorithm: algorithm)
-//        case "Rabin-Karp":
-//            return rabinKarpContent(algorithm: algorithm)
+        case "Rabin-Karp":
+            return rabinKarpContent(algorithm: algorithm)
 //        case "Z Algorithm":
 //            return zAlgorithmContent(algorithm: algorithm)
 //        case "Longest Palindromic Substring":
