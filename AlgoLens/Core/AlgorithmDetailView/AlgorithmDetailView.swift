@@ -206,8 +206,8 @@ struct AlgorithmDetailView: View {
                 SubsequenceCheckVisualizationView()
             }
             // Recursion & Backtracking Algorithms
-//            else if viewModel.algorithm.name == "Tower of Hanoi" {
-//                TowerOfHanoiVisualizationView()
+            else if viewModel.algorithm.name == "Tower of Hanoi" {
+                TowerOfHanoiVisualizationView()
 //            } else if viewModel.algorithm.name == "N-Queens" {
 //                NQueensVisualizationView()
 //            } else if viewModel.algorithm.name == "Permutations" {
@@ -222,7 +222,7 @@ struct AlgorithmDetailView: View {
 //                RatInMazeVisualizationView()
 //            } else if viewModel.algorithm.name == "Word Search" {
 //                WordSearchVisualizationView()
-//            }
+            }
             else {
                 AlgorithmPlaceholderView(algorithm: viewModel.algorithm)
             }

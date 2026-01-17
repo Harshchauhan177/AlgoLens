@@ -1,91 +1,116 @@
-////
-////  TowerOfHanoiContent.swift
-////  AlgoLens
-////
-////  Created by harsh chauhan on 17/01/26.
-////
 //
-//import Foundation
+//  TowerOfHanoiContent.swift
+//  AlgoLens
 //
-//extension AlgorithmContent {
-//    static func towerOfHanoiContent() -> AlgorithmContent {
-//        AlgorithmContent(
-//            introduction: """
-//            The Tower of Hanoi is a classic mathematical puzzle that demonstrates the power of recursion. The puzzle consists of three rods and a number of disks of different sizes that can slide onto any rod.
-//            
-//            The puzzle starts with all disks stacked in ascending order on one rod (smallest on top), creating a conical shape. The objective is to move the entire stack to another rod, following these rules:
-//            
-//            1. Only one disk can be moved at a time
-//            2. A disk can only be moved if it's the top disk on a stack
-//            3. No disk may be placed on top of a smaller disk
-//            
-//            The minimum number of moves required to solve the puzzle is 2^n - 1, where n is the number of disks.
-//            """,
-//            
-//            howItWorks: """
-//            The algorithm uses a divide-and-conquer approach:
-//            
-//            1. **Base Case**: If there's only 1 disk, move it directly from source to destination
-//            
-//            2. **Recursive Case** (for n disks):
-//               • Move (n-1) disks from source to auxiliary rod (using destination as spare)
-//               • Move the largest disk from source to destination
-//               • Move (n-1) disks from auxiliary to destination (using source as spare)
-//            
-//            The recursion naturally handles the constraint that larger disks cannot be placed on smaller ones.
-//            
-//            **Key Insight**: To move n disks, we recursively solve the problem for (n-1) disks twice, with one direct move of the largest disk in between.
-//            """,
-//            
-//            realWorldApplications: """
-//            • **Backup Systems**: Sequential data backup and restoration
-//            • **Puzzle Games**: Foundation for many recursive puzzle games
-//            • **Algorithm Teaching**: Demonstrates recursion concepts
-//            • **Stack Operations**: Understanding stack data structures
-//            • **Resource Management**: Planning sequential resource transfers
-//            • **Computer Science Education**: Classic example of divide-and-conquer
-//            """,
-//            
-//            codeExample: """
-//            func towerOfHanoi(n: Int, source: String, destination: String, auxiliary: String) -> [String] {
-//                var moves: [String] = []
-//                
-//                func solve(_ n: Int, _ from: String, _ to: String, _ aux: String) {
-//                    if n == 1 {
-//                        // Base case: move single disk
-//                        moves.append("Move disk 1 from \\(from) to \\(to)")
-//                        return
-//                    }
-//                    
-//                    // Move n-1 disks from source to auxiliary
-//                    solve(n - 1, from, aux, to)
-//                    
-//                    // Move largest disk from source to destination
-//                    moves.append("Move disk \\(n) from \\(from) to \\(to)")
-//                    
-//                    // Move n-1 disks from auxiliary to destination
-//                    solve(n - 1, aux, to, from)
-//                }
-//                
-//                solve(n, source, destination, auxiliary)
-//                return moves
-//            }
-//            
-//            // Example usage
-//            let moves = towerOfHanoi(n: 3, source: "A", destination: "C", auxiliary: "B")
-//            for move in moves {
-//                print(move)
-//            }
-//            
-//            // Output:
-//            // Move disk 1 from A to C
-//            // Move disk 2 from A to B
-//            // Move disk 1 from C to B
-//            // Move disk 3 from A to C
-//            // Move disk 1 from B to A
-//            // Move disk 2 from B to C
-//            // Move disk 1 from A to C
-//            """
-//        )
-//    }
-//}
+//  Created by harsh chauhan on 17/01/26.
+//
+
+import Foundation
+
+extension AlgorithmContent {
+    static func towerOfHanoiContent(algorithm: Algorithm) -> AlgorithmContent {
+        return AlgorithmContent(
+            algorithm: algorithm,
+            explanation: "Tower of Hanoi is a classic mathematical puzzle that demonstrates recursion. Move n disks from source rod to destination rod using an auxiliary rod, with the rule that no larger disk can be placed on a smaller disk.",
+            whenToUse: [
+                "When learning recursion concepts",
+                "For understanding divide-and-conquer strategy",
+                "When solving sequential transfer problems",
+                "For demonstrating exponential complexity"
+            ],
+            keyIdea: "To move n disks: move (n-1) disks to auxiliary, move largest disk to destination, then move (n-1) disks from auxiliary to destination.",
+            codeImplementations: [
+                .pseudocode: """
+                function towerOfHanoi(n, source, destination, auxiliary):
+                    if n == 1:
+                        move disk from source to destination
+                        return
+                    
+                    towerOfHanoi(n-1, source, auxiliary, destination)
+                    move disk n from source to destination
+                    towerOfHanoi(n-1, auxiliary, destination, source)
+                """,
+                .c: """
+                void towerOfHanoi(int n, char source, char dest, char aux) {
+                    if (n == 1) {
+                        printf("Move disk 1 from %c to %c\\n", source, dest);
+                        return;
+                    }
+                    towerOfHanoi(n - 1, source, aux, dest);
+                    printf("Move disk %d from %c to %c\\n", n, source, dest);
+                    towerOfHanoi(n - 1, aux, dest, source);
+                }
+                """,
+                .cpp: """
+                void towerOfHanoi(int n, char source, char dest, char aux) {
+                    if (n == 1) {
+                        cout << "Move disk 1 from " << source << " to " << dest << endl;
+                        return;
+                    }
+                    towerOfHanoi(n - 1, source, aux, dest);
+                    cout << "Move disk " << n << " from " << source << " to " << dest << endl;
+                    towerOfHanoi(n - 1, aux, dest, source);
+                }
+                """,
+                .java: """
+                public void towerOfHanoi(int n, char source, char dest, char aux) {
+                    if (n == 1) {
+                        System.out.println("Move disk 1 from " + source + " to " + dest);
+                        return;
+                    }
+                    towerOfHanoi(n - 1, source, aux, dest);
+                    System.out.println("Move disk " + n + " from " + source + " to " + dest);
+                    towerOfHanoi(n - 1, aux, dest, source);
+                }
+                """,
+                .python: """
+                def tower_of_hanoi(n, source, dest, aux):
+                    if n == 1:
+                        print(f"Move disk 1 from {source} to {dest}")
+                        return
+                    
+                    tower_of_hanoi(n - 1, source, aux, dest)
+                    print(f"Move disk {n} from {source} to {dest}")
+                    tower_of_hanoi(n - 1, aux, dest, source)
+                """,
+                .swift: """
+                func towerOfHanoi(n: Int, source: String, dest: String, aux: String) {
+                    if n == 1 {
+                        print("Move disk 1 from \\(source) to \\(dest)")
+                        return
+                    }
+                    towerOfHanoi(n: n - 1, source: source, dest: aux, aux: dest)
+                    print("Move disk \\(n) from \\(source) to \\(dest)")
+                    towerOfHanoi(n: n - 1, source: aux, dest: dest, aux: source)
+                }
+                """,
+                .javascript: """
+                function towerOfHanoi(n, source, dest, aux) {
+                    if (n === 1) {
+                        console.log(`Move disk 1 from ${source} to ${dest}`);
+                        return;
+                    }
+                    towerOfHanoi(n - 1, source, aux, dest);
+                    console.log(`Move disk ${n} from ${source} to ${dest}`);
+                    towerOfHanoi(n - 1, aux, dest, source);
+                }
+                """
+            ],
+            example: AlgorithmExample(
+                inputArray: [3, 2, 1],
+                target: 0,
+                expectedOutput: "7 moves (2^3 - 1)",
+                explanation: "Move 3 disks from Tower A to Tower C using Tower B as auxiliary. Requires exactly 7 moves."
+            ),
+            steps: [
+                AlgorithmStep(title: "Base Case", description: "If n = 1, move disk directly to destination", type: .start),
+                AlgorithmStep(title: "Move n-1 to Auxiliary", description: "Recursively move (n-1) disks from source to auxiliary using destination", type: .process),
+                AlgorithmStep(title: "Move Largest Disk", description: "Move the largest disk (nth) from source to destination", type: .decision),
+                AlgorithmStep(title: "Move n-1 to Destination", description: "Recursively move (n-1) disks from auxiliary to destination using source", type: .process),
+                AlgorithmStep(title: "Complete", description: "All disks successfully moved to destination", type: .success),
+                AlgorithmStep(title: "Total Moves", description: "Minimum moves required: 2^n - 1", type: .end)
+            ]
+        )
+    }
+}
+

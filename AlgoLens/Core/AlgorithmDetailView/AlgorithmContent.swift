@@ -176,8 +176,8 @@ extension AlgorithmContent {
             return subsequenceCheckContent(algorithm: algorithm)
         
         // Recursion & Backtracking Algorithms
-//        case "Tower of Hanoi":
-//            return towerOfHanoiContent(algorithm: algorithm)
+        case "Tower of Hanoi":
+            return towerOfHanoiContent(algorithm: algorithm)
 //        case "N-Queens":
 //            return nQueensContent(algorithm: algorithm)
 //        case "Rat in a Maze":
