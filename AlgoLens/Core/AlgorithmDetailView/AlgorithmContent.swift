@@ -170,8 +170,8 @@ extension AlgorithmContent {
             return longestPalindromicSubstringContent(algorithm: algorithm)
         case "Anagram Check":
             return anagramCheckContent(algorithm: algorithm)
-//        case "String Rotation":
-//            return stringRotationContent(algorithm: algorithm)
+        case "String Rotation":
+            return stringRotationContent(algorithm: algorithm)
 //        case "Subsequence Check":
 //            return subsequenceCheckContent(algorithm: algorithm)
             
