@@ -172,8 +172,8 @@ extension AlgorithmContent {
             return anagramCheckContent(algorithm: algorithm)
         case "String Rotation":
             return stringRotationContent(algorithm: algorithm)
-//        case "Subsequence Check":
-//            return subsequenceCheckContent(algorithm: algorithm)
+        case "Subsequence Check":
+            return subsequenceCheckContent(algorithm: algorithm)
             
         default:
             return defaultContent(algorithm: algorithm)
