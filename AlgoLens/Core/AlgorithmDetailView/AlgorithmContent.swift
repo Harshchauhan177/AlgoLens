@@ -174,6 +174,24 @@ extension AlgorithmContent {
             return stringRotationContent(algorithm: algorithm)
         case "Subsequence Check":
             return subsequenceCheckContent(algorithm: algorithm)
+        
+        // Recursion & Backtracking Algorithms
+//        case "Tower of Hanoi":
+//            return towerOfHanoiContent(algorithm: algorithm)
+//        case "N-Queens":
+//            return nQueensContent(algorithm: algorithm)
+//        case "Rat in a Maze":
+//            return ratInMazeContent(algorithm: algorithm)
+//        case "Sudoku Solver":
+//            return sudokuSolverContent(algorithm: algorithm)
+//        case "Permutations":
+//            return permutationsContent(algorithm: algorithm)
+//        case "Combinations":
+//            return combinationsContent(algorithm: algorithm)
+//        case "Subset Generation":
+//            return subsetGenerationContent(algorithm: algorithm)
+//        case "Word Search":
+//            return wordSearchContent(algorithm: algorithm)
             
         default:
             return defaultContent(algorithm: algorithm)

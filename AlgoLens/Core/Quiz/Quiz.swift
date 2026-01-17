@@ -148,6 +148,24 @@ extension Quiz {
             return stringRotationQuiz(algorithm: algorithm)
         case "Subsequence Check":
             return subsequenceCheckQuiz(algorithm: algorithm)
+        
+        // Recursion & Backtracking Algorithms
+        case "Tower of Hanoi":
+            return towerOfHanoiQuiz(algorithm: algorithm)
+        case "N-Queens":
+            return nQueensQuiz(algorithm: algorithm)
+        case "Rat in a Maze":
+            return ratInMazeQuiz(algorithm: algorithm)
+        case "Sudoku Solver":
+            return sudokuSolverQuiz(algorithm: algorithm)
+        case "Permutations":
+            return permutationsQuiz(algorithm: algorithm)
+        case "Combinations":
+            return combinationsQuiz(algorithm: algorithm)
+        case "Subset Generation":
+            return subsetGenerationQuiz(algorithm: algorithm)
+        case "Word Search":
+            return wordSearchQuiz(algorithm: algorithm)
             
         default:
             return defaultQuiz(algorithm: algorithm)
