@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SudokuSolverView: View {
+struct SudokuSolverVisualizationView: View {
     @StateObject private var viewModel = SudokuSolverViewModel()
     
     var body: some View {
@@ -94,5 +94,5 @@ struct SudokuCellView: View {
 }
 
 #Preview {
-    SudokuSolverView()
+    SudokuSolverVisualizationView()
 }

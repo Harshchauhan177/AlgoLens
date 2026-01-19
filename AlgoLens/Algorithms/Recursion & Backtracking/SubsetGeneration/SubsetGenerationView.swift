@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SubsetGenerationView: View {
+struct SubsetGenerationVisualizationView: View {
     @StateObject private var viewModel = SubsetGenerationViewModel()
     
     var body: some View {
@@ -104,5 +104,5 @@ struct SubsetGenerationView: View {
 }
 
 #Preview {
-    SubsetGenerationView()
+    SubsetGenerationVisualizationView()
 }

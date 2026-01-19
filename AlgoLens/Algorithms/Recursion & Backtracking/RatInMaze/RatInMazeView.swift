@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct RatInMazeView: View {
+struct RatInMazeVisualizationView: View {
     @StateObject private var viewModel = RatInMazeViewModel()
     
     var body: some View {
@@ -116,5 +116,5 @@ struct MazeCellView: View {
 }
 
 #Preview {
-    RatInMazeView()
+    RatInMazeVisualizationView()
 }

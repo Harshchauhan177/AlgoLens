@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CombinationsView: View {
+struct CombinationsVisualizationView: View {
     @StateObject private var viewModel = CombinationsViewModel()
     
     var body: some View {
@@ -105,5 +105,5 @@ struct CombinationsView: View {
 }
 
 #Preview {
-    CombinationsView()
+    CombinationsVisualizationView()
 }

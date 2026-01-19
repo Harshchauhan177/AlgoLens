@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct PermutationsView: View {
+struct PermutationsVisualizationView: View {
     @StateObject private var viewModel = PermutationsViewModel()
     
     var body: some View {
@@ -93,5 +93,5 @@ struct PermutationsView: View {
 }
 
 #Preview {
-    PermutationsView()
+    PermutationsVisualizationView()
 }

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct WordSearchView: View {
+struct WordSearchVisualizationView: View {
     @StateObject private var viewModel = WordSearchViewModel()
     
     var body: some View {
@@ -121,5 +121,5 @@ struct WordSearchCellView: View {
 }
 
 #Preview {
-    WordSearchView()
+    WordSearchVisualizationView()
 }

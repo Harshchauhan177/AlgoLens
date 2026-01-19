@@ -208,20 +208,20 @@ struct AlgorithmDetailView: View {
             // Recursion & Backtracking Algorithms
             else if viewModel.algorithm.name == "Tower of Hanoi" {
                 TowerOfHanoiVisualizationView()
-//            } else if viewModel.algorithm.name == "N-Queens" {
-//                NQueensVisualizationView()
-//            } else if viewModel.algorithm.name == "Permutations" {
-//                PermutationsVisualizationView()
-//            } else if viewModel.algorithm.name == "Combinations" {
-//                CombinationsVisualizationView()
-//            } else if viewModel.algorithm.name == "Subset Generation" {
-//                SubsetGenerationVisualizationView()
-//            } else if viewModel.algorithm.name == "Sudoku Solver" {
-//                SudokuSolverVisualizationView()
-//            } else if viewModel.algorithm.name == "Rat in Maze" {
-//                RatInMazeVisualizationView()
-//            } else if viewModel.algorithm.name == "Word Search" {
-//                WordSearchVisualizationView()
+            } else if viewModel.algorithm.name == "N-Queens" {
+                NQueensVisualizationView()
+            } else if viewModel.algorithm.name == "Permutations" {
+                PermutationsVisualizationView()
+            } else if viewModel.algorithm.name == "Combinations" {
+                CombinationsVisualizationView()
+            } else if viewModel.algorithm.name == "Subset Generation" {
+                SubsetGenerationVisualizationView()
+            } else if viewModel.algorithm.name == "Sudoku Solver" {
+                SudokuSolverVisualizationView()
+            } else if viewModel.algorithm.name == "Rat in a Maze" {
+                RatInMazeVisualizationView()
+            } else if viewModel.algorithm.name == "Word Search" {
+                WordSearchVisualizationView()
             }
             else {
                 AlgorithmPlaceholderView(algorithm: viewModel.algorithm)

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct NQueensView: View {
+struct NQueensVisualizationView: View {
     @StateObject private var viewModel = NQueensViewModel()
     
     var body: some View {
@@ -90,5 +90,5 @@ struct ChessCellView: View {
 }
 
 #Preview {
-    NQueensView()
+    NQueensVisualizationView()
 }
