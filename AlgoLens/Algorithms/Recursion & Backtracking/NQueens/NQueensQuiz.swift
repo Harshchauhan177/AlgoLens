@@ -18,10 +18,10 @@ extension Quiz {
                 type: .multipleChoice
             ),
             QuizQuestion(
-                questionText: "How many solutions exist for the 8-Queens problem?",
-                options: ["12", "92", "40", "64"],
-                correctAnswerIndex: 1,
-                explanation: "There are exactly 92 distinct solutions for placing 8 queens on an 8×8 chessboard.",
+                questionText: "What is the space complexity of N-Queens?",
+                options: ["O(1)", "O(N)", "O(N²)", "O(N!)"],
+                correctAnswerIndex: 2,
+                explanation: "Space complexity is O(N²) for storing the board, plus O(N) for recursion depth, resulting in O(N²) overall.",
                 type: .multipleChoice
             ),
             QuizQuestion(
@@ -39,10 +39,10 @@ extension Quiz {
                 type: .multipleChoice
             ),
             QuizQuestion(
-                questionText: "What is the space complexity of N-Queens?",
-                options: ["O(1)", "O(N)", "O(N²)", "O(N!)"],
+                questionText: "How many solutions exist for the 8-Queens problem?",
+                options: ["12", "40", "92", "64"],
                 correctAnswerIndex: 2,
-                explanation: "Space complexity is O(N²) for storing the board, plus O(N) for recursion depth, resulting in O(N²) overall.",
+                explanation: "There are exactly 92 distinct solutions for placing 8 queens on an 8×8 chessboard.",
                 type: .multipleChoice
             ),
             QuizQuestion(
@@ -57,6 +57,27 @@ extension Quiz {
                 options: ["Only rows", "Only columns", "Rows, columns, and diagonals", "Only diagonals"],
                 correctAnswerIndex: 2,
                 explanation: "We must check rows, columns, and both diagonals since queens can attack in all these directions.",
+                type: .multipleChoice
+            ),
+            QuizQuestion(
+                questionText: "Why do we only check the left side when verifying queen safety?",
+                options: ["To save time", "Right side hasn't been filled yet", "Queens can't attack right", "Random optimization"],
+                correctAnswerIndex: 1,
+                explanation: "We place queens column by column from left to right, so the right side hasn't been filled with queens yet.",
+                type: .multipleChoice
+            ),
+            QuizQuestion(
+                questionText: "Backtracking guarantees finding all possible solutions.",
+                options: ["True", "False"],
+                correctAnswerIndex: 0,
+                explanation: "True. Backtracking systematically explores all possibilities and finds all valid solutions.",
+                type: .trueFalse
+            ),
+            QuizQuestion(
+                questionText: "How many solutions exist for the 4-Queens problem?",
+                options: ["1", "2", "4", "8"],
+                correctAnswerIndex: 1,
+                explanation: "There are exactly 2 distinct solutions for the 4-Queens problem.",
                 type: .multipleChoice
             )
         ]
