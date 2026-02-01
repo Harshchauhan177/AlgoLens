@@ -208,8 +208,6 @@ struct AlgorithmDetailView: View {
                 TowerOfHanoiVisualizationView()
             } else if viewModel.algorithm.name == "N-Queens" {
                 NQueensVisualizationView()
-            } else if viewModel.algorithm.name == "Sudoku Solver" {
-                SudokuSolverVisualizationView()
             } else if viewModel.algorithm.name == "Rat in a Maze" {
                 RatInMazeVisualizationView()
             } else if viewModel.algorithm.name == "Word Search" {

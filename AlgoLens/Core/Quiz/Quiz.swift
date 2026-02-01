@@ -156,8 +156,6 @@ extension Quiz {
             return nQueensQuiz(algorithm: algorithm)
         case "Rat in a Maze":
             return ratInMazeQuiz(algorithm: algorithm)
-        case "Sudoku Solver":
-            return sudokuSolverQuiz(algorithm: algorithm)
         case "Word Search":
             return wordSearchQuiz(algorithm: algorithm)
             

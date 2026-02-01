@@ -145,10 +145,8 @@ extension AlgorithmContent {
             return nQueensContent(algorithm: algorithm)
         case "Rat in a Maze":
             return ratInMazeContent(algorithm: algorithm)
-//        case "Sudoku Solver":
-//            return sudokuSolverContent(algorithm: algorithm)
-//        case "Word Search":
-//            return wordSearchContent(algorithm: algorithm)
+        case "Word Search":
+            return wordSearchContent(algorithm: algorithm)
             
         default:
             return defaultContent(algorithm: algorithm)
