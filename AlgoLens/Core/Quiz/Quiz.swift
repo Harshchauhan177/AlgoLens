@@ -158,12 +158,12 @@ extension Quiz {
             return ratInMazeQuiz(algorithm: algorithm)
         case "Sudoku Solver":
             return sudokuSolverQuiz(algorithm: algorithm)
-        case "Permutations":
-            return permutationsQuiz(algorithm: algorithm)
-        case "Combinations":
-            return combinationsQuiz(algorithm: algorithm)
-        case "Subset Generation":
-            return subsetGenerationQuiz(algorithm: algorithm)
+//        case "Permutations":
+//            return permutationsQuiz(algorithm: algorithm)
+//        case "Combinations":
+//            return combinationsQuiz(algorithm: algorithm)
+//        case "Subset Generation":
+//            return subsetGenerationQuiz(algorithm: algorithm)
         case "Word Search":
             return wordSearchQuiz(algorithm: algorithm)
             

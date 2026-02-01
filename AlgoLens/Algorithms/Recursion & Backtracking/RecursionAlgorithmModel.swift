@@ -38,27 +38,27 @@ extension Algorithm {
             complexity: Complexity(time: "O(9^(n²))", space: "O(n²)"),
             category: AlgorithmCategory.allCategories[4]
         ),
-        Algorithm(
-            name: "Permutations",
-            description: "Generate all arrangements of elements",
-            icon: "shuffle.circle.fill",
-            complexity: Complexity(time: "O(n!)", space: "O(n)"),
-            category: AlgorithmCategory.allCategories[4]
-        ),
-        Algorithm(
-            name: "Combinations",
-            description: "Generate all possible selections",
-            icon: "circle.grid.cross.fill",
-            complexity: Complexity(time: "O(2^n)", space: "O(n)"),
-            category: AlgorithmCategory.allCategories[4]
-        ),
-        Algorithm(
-            name: "Subset Generation",
-            description: "Generate all possible subsets",
-            icon: "square.stack.3d.up.fill",
-            complexity: Complexity(time: "O(2^n)", space: "O(n)"),
-            category: AlgorithmCategory.allCategories[4]
-        ),
+//        Algorithm(
+//            name: "Permutations",
+//            description: "Generate all arrangements of elements",
+//            icon: "shuffle.circle.fill",
+//            complexity: Complexity(time: "O(n!)", space: "O(n)"),
+//            category: AlgorithmCategory.allCategories[4]
+//        ),
+//        Algorithm(
+//            name: "Combinations",
+//            description: "Generate all possible selections",
+//            icon: "circle.grid.cross.fill",
+//            complexity: Complexity(time: "O(2^n)", space: "O(n)"),
+//            category: AlgorithmCategory.allCategories[4]
+//        ),
+//        Algorithm(
+//            name: "Subset Generation",
+//            description: "Generate all possible subsets",
+//            icon: "square.stack.3d.up.fill",
+//            complexity: Complexity(time: "O(2^n)", space: "O(n)"),
+//            category: AlgorithmCategory.allCategories[4]
+//        ),
         Algorithm(
             name: "Word Search",
             description: "Find word in 2D character grid",

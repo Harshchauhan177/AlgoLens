@@ -210,12 +210,12 @@ struct AlgorithmDetailView: View {
                 TowerOfHanoiVisualizationView()
             } else if viewModel.algorithm.name == "N-Queens" {
                 NQueensVisualizationView()
-            } else if viewModel.algorithm.name == "Permutations" {
-                PermutationsVisualizationView()
-            } else if viewModel.algorithm.name == "Combinations" {
-                CombinationsVisualizationView()
-            } else if viewModel.algorithm.name == "Subset Generation" {
-                SubsetGenerationVisualizationView()
+//            } else if viewModel.algorithm.name == "Permutations" {
+//                PermutationsVisualizationView()
+//            } else if viewModel.algorithm.name == "Combinations" {
+//                CombinationsVisualizationView()
+//            } else if viewModel.algorithm.name == "Subset Generation" {
+//                SubsetGenerationVisualizationView()
             } else if viewModel.algorithm.name == "Sudoku Solver" {
                 SudokuSolverVisualizationView()
             } else if viewModel.algorithm.name == "Rat in a Maze" {
