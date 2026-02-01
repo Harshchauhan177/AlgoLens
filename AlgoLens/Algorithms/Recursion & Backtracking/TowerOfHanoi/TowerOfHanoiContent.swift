@@ -96,12 +96,7 @@ extension AlgorithmContent {
                 }
                 """
             ],
-            example: AlgorithmExample(
-                inputArray: [3, 2, 1],
-                target: 0,
-                expectedOutput: "7 moves (2^3 - 1)",
-                explanation: "Move 3 disks from Tower A to Tower C using Tower B as auxiliary. Requires exactly 7 moves."
-            ),
+            
             steps: [
                 AlgorithmStep(title: "Base Case", description: "If n = 1, move disk directly to destination", type: .start),
                 AlgorithmStep(title: "Move n-1 to Auxiliary", description: "Recursively move (n-1) disks from source to auxiliary using destination", type: .process),

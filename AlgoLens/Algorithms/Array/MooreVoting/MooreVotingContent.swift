@@ -253,12 +253,7 @@ extension AlgorithmContent {
                 }
                 """
             ],
-            example: AlgorithmExample(
-                inputArray: [3, 3, 4, 2, 4, 4, 2, 4, 4],
-                target: 0,
-                expectedOutput: "Majority: 4",
-                explanation: "Element 4 appears 5 times out of 9 (> 4.5), making it the majority element. The algorithm finds it by maintaining a candidate and count through voting."
-            ),
+            
             steps: [
                 AlgorithmStep(title: "Initialize", description: "Set candidate = nil, count = 0", type: .start),
                 AlgorithmStep(title: "Phase 1: Find Candidate", description: "Iterate through array voting for/against candidate", type: .process),

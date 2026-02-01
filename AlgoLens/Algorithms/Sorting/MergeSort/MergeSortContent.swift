@@ -176,12 +176,7 @@ extension AlgorithmContent {
                 }
                 """
             ],
-            example: AlgorithmExample(
-                inputArray: [38, 27, 43, 3, 9, 82, 10],
-                target: 0,
-                expectedOutput: "[3, 9, 10, 27, 38, 43, 82]",
-                explanation: "Divide: [38,27,43,3] and [9,82,10]. Recursively divide and sort. Merge sorted halves: [3,27,38,43] and [9,10,82]. Final merge produces sorted array."
-            ),
+            
             steps: [
                 AlgorithmStep(title: "Divide", description: "Split array into two halves at midpoint", type: .start),
                 AlgorithmStep(title: "Recurse Left", description: "Recursively sort the left half", type: .process),

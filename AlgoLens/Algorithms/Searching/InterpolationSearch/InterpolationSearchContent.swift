@@ -151,12 +151,7 @@ extension AlgorithmContent {
                 }
                 """
             ],
-            example: AlgorithmExample(
-                inputArray: [1, 3, 4, 6, 7, 9],
-                target: 6,
-                expectedOutput: "Found at index 3",
-                explanation: "Estimate position based on value. Target 6 is likely near middle-right."
-            ),
+            
             steps: [
                 AlgorithmStep(title: "Initialize", description: "Set low and high pointers", type: .start),
                 AlgorithmStep(title: "Estimate Position", description: "Calculate estimated position using interpolation", type: .process),

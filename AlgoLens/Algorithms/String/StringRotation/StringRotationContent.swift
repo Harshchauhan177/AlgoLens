@@ -90,12 +90,7 @@ extension AlgorithmContent {
                 }
                 """
             ],
-            example: AlgorithmExample(
-                text: "WATERBOTTLE + WATERBOTTLE = WATERBOTTLEWATERBOTTLE",
-                pattern: "ERBOTTLEWAT",
-                expectedOutput: "True - ERBOTTLEWAT is found in the concatenated string",
-                explanation: "Since 'ERBOTTLEWAT' appears in 'WATERBOTTLEWATERBOTTLE', it confirms that 'ERBOTTLEWAT' is a rotation of 'WATERBOTTLE'. The rotation moves 'WAT' from the beginning to the end."
-            ),
+            
             steps: [
                 AlgorithmStep(title: "Check Lengths", description: "Verify both strings have equal length", type: .start),
                 AlgorithmStep(title: "Length Validation", description: "If lengths differ, strings cannot be rotations", type: .decision),

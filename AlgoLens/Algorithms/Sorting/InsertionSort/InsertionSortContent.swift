@@ -109,12 +109,7 @@ extension AlgorithmContent {
                 }
                 """
             ],
-            example: AlgorithmExample(
-                inputArray: [12, 11, 13, 5, 6],
-                target: 0,
-                expectedOutput: "[5, 6, 11, 12, 13]",
-                explanation: "Start with 12 as sorted. Insert 11 before 12. Keep 13 at end. Insert 5 at beginning. Insert 6 after 5. Result is sorted array."
-            ),
+            
             steps: [
                 AlgorithmStep(title: "Start with Second", description: "Consider first element as sorted, start from index 1", type: .start),
                 AlgorithmStep(title: "Pick Key", description: "Select current element as key to insert", type: .process),

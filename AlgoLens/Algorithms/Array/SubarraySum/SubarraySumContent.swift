@@ -95,12 +95,7 @@ extension AlgorithmContent {
                 }
                 """
             ],
-            example: AlgorithmExample(
-                inputArray: [1, 2, 3, 7, 5],
-                target: 12,
-                expectedOutput: "Subarray [2, 3, 7] from indices 1 to 3",
-                explanation: "Elements from index 1 to 3 sum to 12. Found by checking if prefix_sum[3] - target exists in hash map."
-            ),
+            
             steps: [
                 AlgorithmStep(title: "Initialize", description: "Set sum=0, create hash map with {0: -1}", type: .start),
                 AlgorithmStep(title: "Add Element", description: "Add current element to running sum", type: .process),

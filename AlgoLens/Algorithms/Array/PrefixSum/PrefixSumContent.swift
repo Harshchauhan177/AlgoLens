@@ -129,12 +129,7 @@ extension AlgorithmContent {
                 }
                 """
             ],
-            example: AlgorithmExample(
-                inputArray: [1, 2, 3, 4, 5],
-                target: 2,
-                expectedOutput: "Query [1..3] = 9",
-                explanation: "Build prefix sum: [1, 3, 6, 10, 15]. For range [1..3], result = prefix[3] - prefix[0] = 10 - 1 = 9. This is much faster than summing elements each time."
-            ),
+            
             steps: [
                 AlgorithmStep(title: "Initialize", description: "Set prefix[0] = array[0]", type: .start),
                 AlgorithmStep(title: "Build Array", description: "For each index i, compute prefix[i] = prefix[i-1] + array[i]", type: .process),

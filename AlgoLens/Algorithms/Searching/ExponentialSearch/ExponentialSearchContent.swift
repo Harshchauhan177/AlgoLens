@@ -166,12 +166,7 @@ extension AlgorithmContent {
                 }
                 """
             ],
-            example: AlgorithmExample(
-                inputArray: [1, 3, 4, 6, 7, 9],
-                target: 6,
-                expectedOutput: "Found at index 3",
-                explanation: "Check indices 1, 2, 4. Find range [2,4], then binary search finds 6."
-            ),
+            
             steps: [
                 AlgorithmStep(title: "Check First", description: "Check if first element is target", type: .start),
                 AlgorithmStep(title: "Initialize", description: "Start with i = 1", type: .process),

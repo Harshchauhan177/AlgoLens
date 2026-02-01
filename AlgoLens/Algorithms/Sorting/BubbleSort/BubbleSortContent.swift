@@ -103,12 +103,7 @@ extension AlgorithmContent {
                 }
                 """
             ],
-            example: AlgorithmExample(
-                inputArray: [64, 34, 25, 12, 22, 11, 90],
-                target: 0,
-                expectedOutput: "[11, 12, 22, 25, 34, 64, 90]",
-                explanation: "After each pass, the largest unsorted element moves to its correct position at the end. Pass 1: 90 moves to end. Pass 2: 64 moves to second-last position, and so on."
-            ),
+            
             steps: [
                 AlgorithmStep(title: "Start First Pass", description: "Begin comparing adjacent elements from the start", type: .start),
                 AlgorithmStep(title: "Compare Adjacent", description: "Compare current element with next element", type: .decision),

@@ -167,12 +167,7 @@ extension AlgorithmContent {
                 }
                 """
             ],
-            example: AlgorithmExample(
-                inputArray: [4, 2, 2, 8, 3, 3, 1],
-                target: 0,
-                expectedOutput: "[1, 2, 2, 3, 3, 4, 8]",
-                explanation: "Count: [0,1,2,2,1,0,0,0,1]. Cumulative: [0,1,3,5,6,6,6,6,7]. Place each element using counts to get sorted array."
-            ),
+            
             steps: [
                 AlgorithmStep(title: "Find Maximum", description: "Find the maximum value in the array", type: .start),
                 AlgorithmStep(title: "Count Occurrences", description: "Create count array and count each element", type: .process),

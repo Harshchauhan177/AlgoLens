@@ -118,12 +118,7 @@ extension AlgorithmContent {
                 }
                 """
             ],
-            example: AlgorithmExample(
-                text: "ahbgdc",
-                pattern: "abc",
-                expectedOutput: "True - 'abc' is a subsequence of 'ahbgdc'",
-                explanation: "We check if 'abc' is a subsequence of 'ahbgdc'. The characters 'a', 'b', 'c' appear in order in 'ahbgdc' (positions 0, 2, 5), so it is a valid subsequence."
-            ),
+            
             steps: [
                 AlgorithmStep(title: "Initialize", description: "Set two pointers: i=0 for subsequence, j=0 for main string", type: .start),
                 AlgorithmStep(title: "Compare Characters", description: "Compare characters at both pointers", type: .decision),

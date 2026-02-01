@@ -151,12 +151,7 @@ extension AlgorithmContent {
                 }
                 """
             ],
-            example: AlgorithmExample(
-                text: "listen",
-                pattern: "silent",
-                expectedOutput: "True - Strings are anagrams",
-                explanation: "Both strings contain the same characters with the same frequencies: l(1), i(1), s(1), t(1), e(1), n(1). Therefore, 'listen' and 'silent' are anagrams."
-            ),
+            
             steps: [
                 AlgorithmStep(title: "Initialize", description: "Check if both strings have the same length", type: .start),
                 AlgorithmStep(title: "Count Characters", description: "Count frequency of each character in first string", type: .process),

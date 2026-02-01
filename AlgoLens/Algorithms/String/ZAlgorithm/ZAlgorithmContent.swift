@@ -297,12 +297,7 @@ extension AlgorithmContent {
                 }
                 """
             ],
-            example: AlgorithmExample(
-                text: "ABABDABACDABABCABAB",
-                pattern: "ABABCABAB",
-                expectedOutput: "Pattern found at position: 10",
-                explanation: "The algorithm creates the string 'ABABCABAB$ABABDABACDABABCABAB' and computes the Z-array. Positions where Z[i] equals the pattern length (9) indicate matches. The pattern 'ABABCABAB' is found at index 10 in the original text."
-            ),
+            
             steps: [
                 AlgorithmStep(title: "Initialize", description: "Concatenate pattern with '$' separator and text", type: .start),
                 AlgorithmStep(title: "Compute Z-Array", description: "Calculate Z values for each position using Z-box optimization", type: .process),

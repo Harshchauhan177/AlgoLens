@@ -129,12 +129,7 @@ extension AlgorithmContent {
                 }
                 """
             ],
-            example: AlgorithmExample(
-                text: "ABABDABACDABABCABAB",
-                pattern: "ABABCABAB",
-                expectedOutput: "Pattern found at position: 10",
-                explanation: "We check each position in the text and compare the pattern character by character. The pattern 'ABABCABAB' matches starting at index 10 in the text 'ABABDABACDABABCABAB'."
-            ),
+            
             steps: [
                 AlgorithmStep(title: "Initialize", description: "Start at position 0 of the text", type: .start),
                 AlgorithmStep(title: "Compare Characters", description: "Compare pattern characters with text from current position", type: .decision),

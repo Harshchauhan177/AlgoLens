@@ -192,12 +192,7 @@ extension AlgorithmContent {
                 }
                 """
             ],
-            example: AlgorithmExample(
-                inputArray: [12, 11, 13, 5, 6, 7],
-                target: 0,
-                expectedOutput: "[5, 6, 7, 11, 12, 13]",
-                explanation: "Build max heap: [13,12,11,5,6,7]. Extract max (13) to end, heapify remaining. Repeat until sorted."
-            ),
+            
             steps: [
                 AlgorithmStep(title: "Build Max Heap", description: "Convert array into a max heap structure", type: .start),
                 AlgorithmStep(title: "Heapify", description: "Ensure parent nodes are larger than children", type: .process),

@@ -123,12 +123,6 @@ extension AlgorithmContent {
                 }
                 """
             ],
-            example: AlgorithmExample(
-                inputArray: [1, 3, 4, 6, 7, 9],
-                target: 6,
-                expectedOutput: "Found at index 3",
-                explanation: "Check middle (4), target is larger. Check right half's middle (7), target is smaller. Find 6 at index 3."
-            ),
             steps: [
                 AlgorithmStep(title: "Initialize Pointers", description: "Set left pointer to start, right to end", type: .start),
                 AlgorithmStep(title: "Find Middle", description: "Calculate middle index: mid = (left + right) / 2", type: .process),

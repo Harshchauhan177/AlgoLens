@@ -174,12 +174,7 @@ extension AlgorithmContent {
                 }
                 """
             ],
-            example: AlgorithmExample(
-                inputArray: [10, 7, 8, 9, 1, 5],
-                target: 0,
-                expectedOutput: "[1, 5, 7, 8, 9, 10]",
-                explanation: "Choose pivot (5). Partition: [1] 5 [7,8,9,10]. Recursively sort left and right partitions. Result is fully sorted array."
-            ),
+            
             steps: [
                 AlgorithmStep(title: "Choose Pivot", description: "Select a pivot element (often the last element)", type: .start),
                 AlgorithmStep(title: "Partition", description: "Rearrange array so smaller elements are before pivot", type: .process),

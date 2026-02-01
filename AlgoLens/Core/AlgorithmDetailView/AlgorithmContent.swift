@@ -48,44 +48,7 @@ struct AlgorithmContent {
     let whenToUse: [String]
     let keyIdea: String
     let codeImplementations: [ProgrammingLanguage: String]
-    let example: AlgorithmExample
     let steps: [AlgorithmStep]
-    
-    struct AlgorithmExample {
-        let inputArray: [Int]
-        let target: Int
-        let expectedOutput: String
-        let explanation: String
-        
-        // Optional fields for string algorithms
-        var text: String?
-        var pattern: String?
-        
-        // Initializer for array-based algorithms
-        init(inputArray: [Int], target: Int, expectedOutput: String, explanation: String) {
-            self.inputArray = inputArray
-            self.target = target
-            self.expectedOutput = expectedOutput
-            self.explanation = explanation
-            self.text = nil
-            self.pattern = nil
-        }
-        
-        // Initializer for string-based algorithms
-        init(text: String, pattern: String, expectedOutput: String, explanation: String) {
-            self.inputArray = []
-            self.target = 0
-            self.expectedOutput = expectedOutput
-            self.explanation = explanation
-            self.text = text
-            self.pattern = pattern
-        }
-        
-        // Computed property to check if it's a string algorithm
-        var isStringAlgorithm: Bool {
-            return text != nil && pattern != nil
-        }
-    }
     
     struct AlgorithmStep {
         let title: String
@@ -216,12 +179,6 @@ extension AlgorithmContent {
                     return result
                 """
             ],
-            example: AlgorithmExample(
-                inputArray: [1, 2, 3, 4, 5],
-                target: 3,
-                expectedOutput: "Found",
-                explanation: "Example explanation will be shown here."
-            ),
             steps: [
                 AlgorithmStep(title: "Initialize", description: "Initialize variables", type: .start),
                 AlgorithmStep(title: "Process", description: "Process data", type: .process),

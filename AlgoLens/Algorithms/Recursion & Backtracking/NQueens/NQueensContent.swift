@@ -293,12 +293,7 @@ extension AlgorithmContent {
                 }
                 """
             ],
-            example: AlgorithmExample(
-                inputArray: [4],
-                target: 0,
-                expectedOutput: "2 solutions",
-                explanation: "For 4×4 board, there are 2 distinct solutions. Each solution places 4 queens such that no two queens attack each other."
-            ),
+            
             steps: [
                 AlgorithmStep(title: "Initialize", description: "Create empty N×N board and start with column 0", type: .start),
                 AlgorithmStep(title: "Try Each Row", description: "For current column, try placing queen in each row", type: .process),

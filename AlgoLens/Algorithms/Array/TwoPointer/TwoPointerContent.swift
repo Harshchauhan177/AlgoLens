@@ -93,12 +93,7 @@ extension AlgorithmContent {
                 }
                 """
             ],
-            example: AlgorithmExample(
-                inputArray: [1, 2, 3, 4, 5, 6, 7, 8, 9],
-                target: 10,
-                expectedOutput: "Pair (1, 9) at indices 0 and 8",
-                explanation: "Start with pointers at 1 and 9. Sum is 10, which matches target. Found pair!"
-            ),
+            
             steps: [
                 AlgorithmStep(title: "Initialize Pointers", description: "Set left pointer at start, right at end", type: .start),
                 AlgorithmStep(title: "Calculate Sum", description: "Add values at both pointers", type: .process),

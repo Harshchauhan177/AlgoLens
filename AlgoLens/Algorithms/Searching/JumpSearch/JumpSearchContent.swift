@@ -234,12 +234,7 @@ extension AlgorithmContent {
                 }
                 """
             ],
-            example: AlgorithmExample(
-                inputArray: [1, 3, 4, 6, 7, 9, 12, 15, 18],
-                target: 12,
-                expectedOutput: "Found at index 6",
-                explanation: "With array size 9, jump size is √9 = 3. Jump to indices 2, 5, 8. At index 8 (value 18), we find 18 > 12, so we linear search from index 6 to 8 and find 12 at index 6."
-            ),
+            
             steps: [
                 AlgorithmStep(
                     title: "Calculate Jump Size",

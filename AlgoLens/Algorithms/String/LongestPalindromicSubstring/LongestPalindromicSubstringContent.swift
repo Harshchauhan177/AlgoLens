@@ -226,12 +226,7 @@ extension AlgorithmContent {
                 }
                 """
             ],
-            example: AlgorithmExample(
-                text: "babad",
-                pattern: "",
-                expectedOutput: "bab or aba",
-                explanation: "The algorithm checks each position as a potential center. For 'babad', it finds two palindromes of length 3: 'bab' (centered at index 1) and 'aba' (centered at index 2). Either one is a valid answer."
-            ),
+            
             steps: [
                 AlgorithmStep(title: "Initialize", description: "Set start position and max length to track longest palindrome", type: .start),
                 AlgorithmStep(title: "Iterate Centers", description: "For each character, treat it as a potential palindrome center", type: .process),

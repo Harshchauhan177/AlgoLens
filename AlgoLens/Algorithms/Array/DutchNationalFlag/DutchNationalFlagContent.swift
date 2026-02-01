@@ -100,12 +100,7 @@ extension AlgorithmContent {
                 }
                 """
             ],
-            example: AlgorithmExample(
-                inputArray: [2, 0, 1, 2, 1, 0],
-                target: 0,
-                expectedOutput: "[0, 0, 1, 1, 2, 2]",
-                explanation: "After sorting: all 0s first, then all 1s, then all 2s"
-            ),
+            
             steps: [
                 AlgorithmStep(title: "Initialize Pointers", description: "Set low=0, mid=0, high=n-1", type: .start),
                 AlgorithmStep(title: "Check Mid Element", description: "Examine value at mid pointer", type: .decision),

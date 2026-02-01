@@ -85,12 +85,6 @@ extension AlgorithmContent {
                 }
                 """
             ],
-            example: AlgorithmExample(
-                inputArray: [4, 7, 1, 9, 3, 6],
-                target: 9,
-                expectedOutput: "Found at index 3",
-                explanation: "We check each element: 4, 7, 1, then find 9 at index 3."
-            ),
             steps: [
                 AlgorithmStep(title: "Initialize", description: "Start at index 0 (first element)", type: .start),
                 AlgorithmStep(title: "Compare", description: "Compare current element with target value", type: .decision),

@@ -357,12 +357,7 @@ extension AlgorithmContent {
                 }
                 """
             ],
-            example: AlgorithmExample(
-                text: "ABABDABACDABABCABAB",
-                pattern: "ABABCABAB",
-                expectedOutput: "Pattern found at position: 10",
-                explanation: "The KMP algorithm first computes the LPS array [0,0,1,2,0,1,2,3,4] for pattern 'ABABCABAB'. Then it efficiently searches through the text 'ABABDABACDABABCABAB' using the LPS array to skip unnecessary comparisons, finding the pattern at index 10."
-            ),
+            
             steps: [
                 AlgorithmStep(title: "Compute LPS Array", description: "Build the Longest Prefix Suffix array for the pattern", type: .start),
                 AlgorithmStep(title: "Initialize Pointers", description: "Set text pointer i=0 and pattern pointer j=0", type: .process),

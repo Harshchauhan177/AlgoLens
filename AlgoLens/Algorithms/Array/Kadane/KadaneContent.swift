@@ -109,12 +109,7 @@ extension AlgorithmContent {
                 }
                 """
             ],
-            example: AlgorithmExample(
-                inputArray: [-2, 1, -3, 4, -1, 2, 1, -5, 4],
-                target: 0,
-                expectedOutput: "Max sum: 6",
-                explanation: "The subarray [4, -1, 2, 1] has the maximum sum of 6. Kadane's algorithm efficiently finds this by maintaining a running sum and deciding at each step whether to continue or restart."
-            ),
+            
             steps: [
                 AlgorithmStep(title: "Initialize", description: "Set currentSum and maxSum to first element", type: .start),
                 AlgorithmStep(title: "Process Element", description: "For each element, evaluate two choices", type: .process),

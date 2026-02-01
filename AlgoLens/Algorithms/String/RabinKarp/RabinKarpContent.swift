@@ -293,12 +293,7 @@ extension AlgorithmContent {
                 }
                 """
             ],
-            example: AlgorithmExample(
-                text: "GEEKSFORGEEKS",
-                pattern: "GEEK",
-                expectedOutput: "Pattern found at positions: 0, 8",
-                explanation: "The algorithm calculates hash values and uses rolling hash to efficiently check all positions. The pattern 'GEEK' appears at indices 0 and 8 in 'GEEKSFORGEEKS'. When hashes match, character-by-character verification confirms the match."
-            ),
+            
             steps: [
                 AlgorithmStep(title: "Initialize", description: "Calculate hash of pattern and first window of text", type: .start),
                 AlgorithmStep(title: "Compare Hashes", description: "Compare pattern hash with current window hash", type: .decision),

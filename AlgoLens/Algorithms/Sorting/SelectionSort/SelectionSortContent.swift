@@ -113,12 +113,7 @@ extension AlgorithmContent {
                 }
                 """
             ],
-            example: AlgorithmExample(
-                inputArray: [64, 25, 12, 22, 11],
-                target: 0,
-                expectedOutput: "[11, 12, 22, 25, 64]",
-                explanation: "Find minimum (11) and swap with first position. Find next minimum (12) in remaining array and swap with second position. Repeat until sorted."
-            ),
+            
             steps: [
                 AlgorithmStep(title: "Start Selection", description: "Set current position to start of array", type: .start),
                 AlgorithmStep(title: "Find Minimum", description: "Scan unsorted portion to find minimum element", type: .process),

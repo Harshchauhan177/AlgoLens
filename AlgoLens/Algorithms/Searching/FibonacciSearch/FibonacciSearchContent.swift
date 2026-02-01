@@ -222,12 +222,7 @@ extension AlgorithmContent {
                 }
                 """
             ],
-            example: AlgorithmExample(
-                inputArray: [1, 3, 4, 6, 7, 9],
-                target: 6,
-                expectedOutput: "Found at index 3",
-                explanation: "Use Fibonacci numbers (1,1,2,3,5,8) to divide array and find target."
-            ),
+            
             steps: [
                 AlgorithmStep(title: "Find Fibonacci", description: "Find smallest Fibonacci number >= array length", type: .start),
                 AlgorithmStep(title: "Initialize", description: "Initialize Fibonacci numbers: fibM, fibM1, fibM2", type: .process),

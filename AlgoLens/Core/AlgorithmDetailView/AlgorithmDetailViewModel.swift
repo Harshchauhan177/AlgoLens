@@ -21,7 +21,6 @@ class AlgorithmDetailViewModel: ObservableObject {
     enum DetailTab: String, CaseIterable {
         case explanation = "Explanation"
         case pseudocode = "Pseudocode"
-        case example = "Example"
         case howItWorks = "How It Works"
         
         var icon: String {
@@ -30,8 +29,6 @@ class AlgorithmDetailViewModel: ObservableObject {
                 return "text.alignleft"
             case .pseudocode:
                 return "chevron.left.forwardslash.chevron.right"
-            case .example:
-                return "lightbulb.fill"
             case .howItWorks:
                 return "list.number"
             }

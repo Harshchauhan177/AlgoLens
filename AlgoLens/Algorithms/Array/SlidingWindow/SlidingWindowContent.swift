@@ -114,12 +114,7 @@ extension AlgorithmContent {
                 }
                 """
             ],
-            example: AlgorithmExample(
-                inputArray: [2, 1, 5, 1, 3, 2],
-                target: 3,
-                expectedOutput: "Max sum: 9",
-                explanation: "Window [5,1,3] at positions 2-4 has the maximum sum of 9. We efficiently find this by sliding the window and updating the sum instead of recalculating each time."
-            ),
+            
             steps: [
                 AlgorithmStep(title: "Initialize Window", description: "Calculate sum of first k elements", type: .start),
                 AlgorithmStep(title: "Set Maximum", description: "Set initial window sum as maximum", type: .process),
