@@ -213,6 +213,10 @@ struct AlgorithmDetailView: View {
             } else if viewModel.algorithm.name == "Word Search" {
                 WordSearchVisualizationView()
             }
+            // Dynamic Programming Algorithms
+            else if viewModel.algorithm.name == "Fibonacci (DP)" {
+                FibonacciDPView()
+            }
             else {
                 AlgorithmPlaceholderView(algorithm: viewModel.algorithm)
             }

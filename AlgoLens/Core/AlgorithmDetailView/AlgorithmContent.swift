@@ -32,7 +32,7 @@ enum ProgrammingLanguage: String, CaseIterable {
         case .java:
             return "cup.and.saucer"
         case .python:
-            return "snake"
+            return "curlybraces"
         case .swift:
             return "swift"
         case .javascript:
@@ -147,6 +147,10 @@ extension AlgorithmContent {
             return ratInMazeContent(algorithm: algorithm)
         case "Word Search":
             return wordSearchContent(algorithm: algorithm)
+        
+        // Dynamic Programming Algorithms
+        case "Fibonacci (DP)":
+            return fibonacciDPContent(algorithm: algorithm)
             
         default:
             return defaultContent(algorithm: algorithm)

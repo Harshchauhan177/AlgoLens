@@ -158,6 +158,10 @@ extension Quiz {
             return ratInMazeQuiz(algorithm: algorithm)
         case "Word Search":
             return wordSearchQuiz(algorithm: algorithm)
+        
+        // Dynamic Programming Algorithms
+        case "Fibonacci (DP)":
+            return fibonacciDPQuiz(algorithm: algorithm)
             
         default:
             return defaultQuiz(algorithm: algorithm)

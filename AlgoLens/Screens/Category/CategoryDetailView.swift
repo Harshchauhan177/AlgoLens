@@ -24,6 +24,8 @@ struct CategoryDetailView: View {
                 StringAlgorithmsView()
             } else if category.name == "Recursion & Backtracking" {
                 RecursionCategoryView()
+            } else if category.name == "Dynamic Programming" {
+                DynamicProgrammingCategoryView()
             } else {
                 // Placeholder for other categories
                 CategoryPlaceholderView(category: category)

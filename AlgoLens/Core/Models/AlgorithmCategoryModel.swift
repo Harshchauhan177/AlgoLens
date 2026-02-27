@@ -54,46 +54,10 @@ extension AlgorithmCategory {
             color: .red
         ),
         AlgorithmCategory(
-            name: "Linked List Algorithms",
-            description: "Reversal, Cycle Detection, Merge",
-            icon: "link.circle.fill",
-            color: .pink
-        ),
-        AlgorithmCategory(
-            name: "Stack & Queue Algorithms",
-            description: "Expression Evaluation, BFS, Monotonic Stack",
-            icon: "square.stack.3d.up.fill",
-            color: .teal
-        ),
-        AlgorithmCategory(
-            name: "Tree Algorithms",
-            description: "Traversals, BST, AVL, Segment Trees",
-            icon: "tree.fill",
-            color: .indigo
-        ),
-        AlgorithmCategory(
-            name: "Graph Algorithms",
-            description: "DFS, BFS, Dijkstra, Floyd-Warshall",
-            icon: "circle.hexagongrid.circle.fill",
-            color: .mint
-        ),
-        AlgorithmCategory(
-            name: "Greedy Algorithms",
-            description: "Activity Selection, Huffman Coding",
-            icon: "chart.line.uptrend.xyaxis.circle.fill",
-            color: .cyan
-        ),
-        AlgorithmCategory(
             name: "Dynamic Programming",
             description: "Knapsack, LCS, Matrix Chain Multiplication",
             icon: "memorychip.fill",
             color: .yellow
-        ),
-        AlgorithmCategory(
-            name: "Bit Manipulation",
-            description: "XOR, Bit Masking, Power of Two",
-            icon: "01.circle.fill",
-            color: .brown
         )
     ]
 }
