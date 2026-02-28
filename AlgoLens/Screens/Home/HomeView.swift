@@ -69,10 +69,6 @@ struct HomeView: View {
                         }
                         .padding(.top, Theme.Spacing.small)
                         
-                        // Enhanced Search Bar
-                        SearchBar(text: $viewModel.searchText)
-                            .padding(.horizontal, Theme.Spacing.large)
-                        
                         // Categories Header
                         HStack {
                             VStack(alignment: .leading, spacing: 4) {
@@ -119,53 +115,14 @@ struct HomeView: View {
                     CategoryDetailView(category: category)
                 }
             }
-            .navigationBarTitleDisplayMode(.inline)
+            .navigationTitle("Hello, Learner 👋")
+            .navigationBarTitleDisplayMode(.large)
             .onAppear {
                 withAnimation {
                     animateCards = true
                 }
             }
         }
-    }
-}
-
-// MARK: - Enhanced Search Bar
-struct SearchBar: View {
-    @Binding var text: String
-    @FocusState private var isFocused: Bool
-    
-    var body: some View {
-        HStack(spacing: Theme.Spacing.small + 2) {
-            Image(systemName: "magnifyingglass")
-                .foregroundColor(isFocused ? .blue : Theme.Colors.secondaryText)
-                .font(.system(size: 16, weight: .semibold))
-            
-            TextField("Search algorithms...", text: $text)
-                .font(.system(size: 16, weight: .medium))
-                .focused($isFocused)
-            
-            if !text.isEmpty {
-                Button(action: { 
-                    text = "" 
-                    isFocused = false
-                }) {
-                    Image(systemName: "xmark.circle.fill")
-                        .foregroundColor(Theme.Colors.secondaryText)
-                        .font(.system(size: 16))
-                }
-                .transition(.scale.combined(with: .opacity))
-            }
-        }
-        .padding(.horizontal, Theme.Spacing.medium + 2)
-        .padding(.vertical, Theme.Spacing.medium)
-        .background(Theme.Colors.cardBackground)
-        .cornerRadius(Theme.CornerRadius.medium + 2)
-        .overlay(
-            RoundedRectangle(cornerRadius: Theme.CornerRadius.medium + 2)
-                .stroke(isFocused ? Color.blue.opacity(0.4) : Color.clear, lineWidth: 2)
-        )
-        .shadow(color: isFocused ? Color.blue.opacity(0.15) : Color.black.opacity(0.06), radius: isFocused ? 12 : 8, x: 0, y: 4)
-        .animation(.spring(response: 0.3, dampingFraction: 0.7), value: isFocused)
     }
 }
 

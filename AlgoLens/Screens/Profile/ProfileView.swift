@@ -42,9 +42,6 @@ struct ProfileView: View {
                         // Profile Header
                         profileHeader
                         
-                        // Streak & Days Banner
-                        streakBanner
-                        
                         // Quick Stats
                         quickStats
                         
@@ -163,87 +160,6 @@ struct ProfileView: View {
             .offset(y: animateContent ? 0 : 10)
         }
         .padding(.top, Theme.Spacing.large)
-    }
-    
-    // MARK: - Streak Banner
-    private var streakBanner: some View {
-        HStack(spacing: Theme.Spacing.large) {
-            // Streak
-            HStack(spacing: 10) {
-                Image(systemName: "flame.fill")
-                    .font(.system(size: 24, weight: .bold))
-                    .foregroundColor(.orange)
-                
-                VStack(alignment: .leading, spacing: 2) {
-                    Text("\(progress.currentStreak)")
-                        .font(.system(size: 22, weight: .heavy, design: .rounded))
-                        .foregroundColor(Theme.Colors.primaryText)
-                    Text("Day Streak")
-                        .font(.system(size: 11, weight: .semibold, design: .rounded))
-                        .foregroundColor(Theme.Colors.secondaryText)
-                }
-            }
-            
-            Divider()
-                .frame(height: 40)
-            
-            // Days Learning
-            HStack(spacing: 10) {
-                Image(systemName: "calendar")
-                    .font(.system(size: 22, weight: .bold))
-                    .foregroundColor(.blue)
-                
-                VStack(alignment: .leading, spacing: 2) {
-                    Text("\(progress.daysSinceFirstLaunch)")
-                        .font(.system(size: 22, weight: .heavy, design: .rounded))
-                        .foregroundColor(Theme.Colors.primaryText)
-                    Text(progress.daysSinceFirstLaunch == 1 ? "Day" : "Days")
-                        .font(.system(size: 11, weight: .semibold, design: .rounded))
-                        .foregroundColor(Theme.Colors.secondaryText)
-                }
-            }
-            
-            Divider()
-                .frame(height: 40)
-            
-            // Best Streak
-            HStack(spacing: 10) {
-                Image(systemName: "trophy.fill")
-                    .font(.system(size: 22, weight: .bold))
-                    .foregroundColor(.yellow)
-                
-                VStack(alignment: .leading, spacing: 2) {
-                    Text("\(progress.longestStreak)")
-                        .font(.system(size: 22, weight: .heavy, design: .rounded))
-                        .foregroundColor(Theme.Colors.primaryText)
-                    Text("Best Streak")
-                        .font(.system(size: 11, weight: .semibold, design: .rounded))
-                        .foregroundColor(Theme.Colors.secondaryText)
-                }
-            }
-        }
-        .padding(.vertical, Theme.Spacing.medium)
-        .padding(.horizontal, Theme.Spacing.medium)
-        .frame(maxWidth: .infinity)
-        .background(
-            RoundedRectangle(cornerRadius: Theme.CornerRadius.large)
-                .fill(.ultraThinMaterial)
-        )
-        .overlay(
-            RoundedRectangle(cornerRadius: Theme.CornerRadius.large)
-                .stroke(
-                    LinearGradient(
-                        colors: [Color.orange.opacity(0.2), Color.yellow.opacity(0.1)],
-                        startPoint: .topLeading,
-                        endPoint: .bottomTrailing
-                    ),
-                    lineWidth: 1
-                )
-        )
-        .shadow(color: Color.orange.opacity(0.1), radius: 8, x: 0, y: 4)
-        .padding(.horizontal, Theme.Spacing.large)
-        .opacity(animateContent ? 1 : 0)
-        .offset(y: animateContent ? 0 : 12)
     }
     
     // MARK: - Quick Stats
