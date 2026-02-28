@@ -33,6 +33,18 @@ struct Theme {
         static let cardBackground = Color(.systemBackground).opacity(0.95)
         static let elevatedBackground = Color(.secondarySystemBackground)
         static let cardBorder = Color(.separator).opacity(0.3)
+        
+        // Adaptive surface for visualization cards (replaces hardcoded white)
+        static let cardSurface = Color(UIColor { traitCollection in
+            traitCollection.userInterfaceStyle == .dark
+                ? UIColor.secondarySystemBackground
+                : UIColor.white.withAlphaComponent(0.9)
+        })
+        static let cardSurfaceStrong = Color(UIColor { traitCollection in
+            traitCollection.userInterfaceStyle == .dark
+                ? UIColor.secondarySystemBackground
+                : UIColor.white.withAlphaComponent(0.95)
+        })
     }
     
     // MARK: - Fonts

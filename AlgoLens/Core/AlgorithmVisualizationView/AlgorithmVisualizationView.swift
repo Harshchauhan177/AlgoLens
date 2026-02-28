@@ -113,7 +113,7 @@ struct ComplexityInfoCard: View {
         }
         .frame(maxWidth: .infinity)
         .padding(.vertical, Theme.Spacing.medium)
-        .background(Color.white.opacity(0.8))
+        .background(.ultraThinMaterial)
         .cornerRadius(Theme.CornerRadius.medium)
         .shadow(color: Color.black.opacity(0.05), radius: 8, x: 0, y: 4)
     }

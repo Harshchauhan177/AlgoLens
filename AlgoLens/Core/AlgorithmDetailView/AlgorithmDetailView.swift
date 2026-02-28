@@ -130,7 +130,7 @@ struct AlgorithmDetailView: View {
                     .padding(.bottom, Theme.Spacing.small + 4)
                 }
                 .background(
-                    Color.white.opacity(0.5)
+                    Color(.systemBackground).opacity(0.5)
                         .background(.ultraThinMaterial)
                 )
             }

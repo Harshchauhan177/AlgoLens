@@ -361,7 +361,7 @@ struct EnhancedMazeGridView: View {
             }
         }
         .padding(Theme.Spacing.medium)
-        .background(Color.white.opacity(0.95))
+        .background(Theme.Colors.cardSurfaceStrong)
         .cornerRadius(Theme.CornerRadius.large)
         .shadow(color: Color.black.opacity(0.1), radius: 20, x: 0, y: 10)
     }
@@ -482,9 +482,9 @@ struct EnhancedMazeCellView: View {
         } else if isTrying {
             return Color.blue.opacity(0.15)
         } else if !isOpen {
-            return Color.black.opacity(0.8)
+            return Color(.label).opacity(0.8)
         } else {
-            return Color.white
+            return Color(.systemBackground)
         }
     }
 }
@@ -516,7 +516,7 @@ struct RatInMazeStatisticsPanel: View {
             }
         }
         .padding(Theme.Spacing.medium)
-        .background(Color.white.opacity(0.9))
+        .background(Theme.Colors.cardSurface)
         .cornerRadius(Theme.CornerRadius.medium)
         .shadow(color: Color.black.opacity(0.05), radius: 8, x: 0, y: 4)
     }
@@ -556,7 +556,7 @@ struct RatInMazeStepPanel: View {
                 .cornerRadius(Theme.CornerRadius.small)
         }
         .padding(Theme.Spacing.medium)
-        .background(Color.white.opacity(0.9))
+        .background(Theme.Colors.cardSurface)
         .cornerRadius(Theme.CornerRadius.medium)
         .shadow(color: Color.black.opacity(0.05), radius: 8, x: 0, y: 4)
     }

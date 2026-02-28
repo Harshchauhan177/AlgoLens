@@ -56,7 +56,7 @@ struct SlidingWindowVisualizationView: View {
                                 TextField("e.g., 2,1,5,1,3,2", text: $viewModel.arrayInput)
                                     .font(.system(size: 15, design: .monospaced))
                                     .padding(Theme.Spacing.medium)
-                                    .background(Color.white.opacity(0.9))
+                                    .background(Theme.Colors.cardSurface)
                                     .cornerRadius(Theme.CornerRadius.medium)
                                     .overlay(
                                         RoundedRectangle(cornerRadius: Theme.CornerRadius.medium)
@@ -76,7 +76,7 @@ struct SlidingWindowVisualizationView: View {
                                 TextField("e.g., 3", text: $viewModel.windowSizeInput)
                                     .font(.system(size: 15, design: .monospaced))
                                     .padding(Theme.Spacing.medium)
-                                    .background(Color.white.opacity(0.9))
+                                    .background(Theme.Colors.cardSurface)
                                     .cornerRadius(Theme.CornerRadius.medium)
                                     .overlay(
                                         RoundedRectangle(cornerRadius: Theme.CornerRadius.medium)
@@ -297,7 +297,7 @@ struct SlidingWindowStepPanel: View {
                 }
             }
             .padding(Theme.Spacing.medium)
-            .background(Color.white.opacity(0.9))
+            .background(Theme.Colors.cardSurface)
             .cornerRadius(Theme.CornerRadius.medium)
             .shadow(color: Color.black.opacity(0.05), radius: 8, x: 0, y: 4)
         }
@@ -353,7 +353,7 @@ struct SlidingWindowArrayElementView: View {
     
     private var backgroundColor: Color {
         switch state {
-        case .unchecked: return Color.white.opacity(0.95)
+        case .unchecked: return Theme.Colors.cardSurfaceStrong
         case .inWindow: return Color.blue.opacity(0.15)
         case .maxWindow: return Color.orange.opacity(0.2)
         case .checked: return Color.gray.opacity(0.08)

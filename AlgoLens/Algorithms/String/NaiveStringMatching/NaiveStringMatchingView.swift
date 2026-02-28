@@ -58,7 +58,7 @@ struct NaiveStringMatchingVisualizationView: View {
                                 TextField("e.g., ABABDABACDABABCABAB", text: $viewModel.textInput)
                                     .font(.system(size: 15, design: .monospaced))
                                     .padding(Theme.Spacing.medium)
-                                    .background(Color.white.opacity(0.9))
+                                    .background(Theme.Colors.cardSurface)
                                     .cornerRadius(Theme.CornerRadius.medium)
                                     .overlay(
                                         RoundedRectangle(cornerRadius: Theme.CornerRadius.medium)
@@ -79,7 +79,7 @@ struct NaiveStringMatchingVisualizationView: View {
                                 TextField("e.g., ABABCABAB", text: $viewModel.patternInput)
                                     .font(.system(size: 15, design: .monospaced))
                                     .padding(Theme.Spacing.medium)
-                                    .background(Color.white.opacity(0.9))
+                                    .background(Theme.Colors.cardSurface)
                                     .cornerRadius(Theme.CornerRadius.medium)
                                     .overlay(
                                         RoundedRectangle(cornerRadius: Theme.CornerRadius.medium)
@@ -367,7 +367,7 @@ struct StringMatchingStepPanel: View {
                 }
             }
             .padding(Theme.Spacing.medium)
-            .background(Color.white.opacity(0.9))
+            .background(Theme.Colors.cardSurface)
             .cornerRadius(Theme.CornerRadius.medium)
             .shadow(color: Color.black.opacity(0.05), radius: 8, x: 0, y: 4)
         }
@@ -426,7 +426,7 @@ struct StringVisualizationView: View {
             }
         }
         .padding(Theme.Spacing.medium)
-        .background(Color.white.opacity(0.9))
+        .background(Theme.Colors.cardSurface)
         .cornerRadius(Theme.CornerRadius.medium)
         .shadow(color: Color.black.opacity(0.05), radius: 8, x: 0, y: 4)
     }
@@ -463,7 +463,7 @@ struct EnhancedCharacterBox: View {
     private var backgroundColor: Color {
         switch state {
         case .normal:
-            return Color.white.opacity(0.95)
+            return Theme.Colors.cardSurfaceStrong
         case .comparing:
             return Color.blue.opacity(0.08)
         case .current:
@@ -592,7 +592,7 @@ struct PatternCharacterBox: View {
     private var backgroundColor: Color {
         if isHighlighted { return Color.blue.opacity(0.15) }
         if isMatched { return Color.green.opacity(0.1) }
-        return Color.white.opacity(0.95)
+        return Theme.Colors.cardSurfaceStrong
     }
     
     private var borderColor: Color {
@@ -787,7 +787,7 @@ struct ImprovedStringVisualizationView: View {
         .padding(Theme.Spacing.large)
         .background(
             RoundedRectangle(cornerRadius: Theme.CornerRadius.large)
-                .fill(Color.white.opacity(0.95))
+                .fill(Theme.Colors.cardSurfaceStrong)
                 .shadow(color: Color.black.opacity(0.08), radius: 12, x: 0, y: 6)
         )
     }
@@ -816,7 +816,7 @@ struct ImprovedStringVisualizationView: View {
     private func backgroundColorForChar(at index: Int) -> Color {
         let state = characterState(index)
         switch state {
-        case .normal: return Color.white
+        case .normal: return Color(.systemBackground)
         case .comparing: return Color.blue.opacity(0.1)
         case .current: return Color.blue.opacity(0.2)
         case .matching: return Color.green.opacity(0.15)
@@ -878,7 +878,7 @@ struct ImprovedStringVisualizationView: View {
     private func backgroundColorForPattern(at index: Int) -> Color {
         if index == patternIndex && isMatching { return Color.blue.opacity(0.2) }
         if index < patternIndex { return Color.green.opacity(0.15) }
-        return Color.white
+        return Color(.systemBackground)
     }
     
     private func borderColorForPattern(at index: Int) -> Color {

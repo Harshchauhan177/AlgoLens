@@ -58,7 +58,7 @@ struct RabinKarpVisualizationView: View {
                                 TextField("e.g., GEEKSFORGEEKS", text: $viewModel.textInput)
                                     .font(.system(size: 15, design: .monospaced))
                                     .padding(Theme.Spacing.medium)
-                                    .background(Color.white.opacity(0.9))
+                                    .background(Theme.Colors.cardSurface)
                                     .cornerRadius(Theme.CornerRadius.medium)
                                     .overlay(
                                         RoundedRectangle(cornerRadius: Theme.CornerRadius.medium)
@@ -79,7 +79,7 @@ struct RabinKarpVisualizationView: View {
                                 TextField("e.g., GEEK", text: $viewModel.patternInput)
                                     .font(.system(size: 15, design: .monospaced))
                                     .padding(Theme.Spacing.medium)
-                                    .background(Color.white.opacity(0.9))
+                                    .background(Theme.Colors.cardSurface)
                                     .cornerRadius(Theme.CornerRadius.medium)
                                     .overlay(
                                         RoundedRectangle(cornerRadius: Theme.CornerRadius.medium)
@@ -372,7 +372,7 @@ struct RabinKarpStepPanel: View {
                 }
             }
             .padding(Theme.Spacing.medium)
-            .background(Color.white.opacity(0.9))
+            .background(Theme.Colors.cardSurface)
             .cornerRadius(Theme.CornerRadius.medium)
             .shadow(color: Color.black.opacity(0.05), radius: 8, x: 0, y: 4)
         }
@@ -522,7 +522,7 @@ struct RabinKarpStringVisualizationView: View {
         .padding(Theme.Spacing.large)
         .background(
             RoundedRectangle(cornerRadius: Theme.CornerRadius.large)
-                .fill(Color.white.opacity(0.95))
+                .fill(Theme.Colors.cardSurfaceStrong)
                 .shadow(color: Color.black.opacity(0.08), radius: 12, x: 0, y: 6)
         )
     }
@@ -557,7 +557,7 @@ struct RabinKarpStringVisualizationView: View {
     private func backgroundColorForChar(at index: Int) -> Color {
         let state = characterState(index)
         switch state {
-        case .normal: return Color.white
+        case .normal: return Color(.systemBackground)
         case .comparing: return Color.blue.opacity(0.1)
         case .current: return Color.blue.opacity(0.2)
         case .matching: return Color.green.opacity(0.15)

@@ -58,7 +58,7 @@ struct HeapSortVisualizationView: View {
                                 TextField("e.g., 12,11,13,5,6,7", text: $viewModel.arrayInput)
                                     .font(.system(size: 15, design: .monospaced))
                                     .padding(Theme.Spacing.medium)
-                                    .background(Color.white.opacity(0.9))
+                                    .background(Theme.Colors.cardSurface)
                                     .cornerRadius(Theme.CornerRadius.medium)
                                     .overlay(
                                         RoundedRectangle(cornerRadius: Theme.CornerRadius.medium)
@@ -315,7 +315,7 @@ struct HeapSortStepInformationPanel: View {
                 }
             }
             .padding(Theme.Spacing.medium)
-            .background(Color.white.opacity(0.9))
+            .background(Theme.Colors.cardSurface)
             .cornerRadius(Theme.CornerRadius.medium)
             .shadow(color: Color.black.opacity(0.05), radius: 8, x: 0, y: 4)
         }
@@ -368,7 +368,7 @@ struct HeapSortArrayElementView: View {
     private var backgroundColor: Color {
         switch state {
         case .unchecked:
-            return Color.white.opacity(0.95)
+            return Theme.Colors.cardSurfaceStrong
         case .active:
             return Color.blue.opacity(0.1)
         case .root:

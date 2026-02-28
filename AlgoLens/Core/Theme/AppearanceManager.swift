@@ -14,6 +14,7 @@ class AppearanceManager: ObservableObject {
     @Published var isDarkMode: Bool {
         didSet {
             UserDefaults.standard.set(isDarkMode, forKey: "isDarkMode")
+            UserDefaults.standard.set(true, forKey: "hasSetAppearance")
         }
     }
     
@@ -22,6 +23,11 @@ class AppearanceManager: ObservableObject {
     }
     
     private init() {
-        self.isDarkMode = UserDefaults.standard.bool(forKey: "isDarkMode")
+        if UserDefaults.standard.bool(forKey: "hasSetAppearance") {
+            self.isDarkMode = UserDefaults.standard.bool(forKey: "isDarkMode")
+        } else {
+            // First launch: detect system appearance
+            self.isDarkMode = UITraitCollection.current.userInterfaceStyle == .dark
+        }
     }
 }

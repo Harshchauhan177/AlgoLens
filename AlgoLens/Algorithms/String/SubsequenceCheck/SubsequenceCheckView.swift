@@ -92,7 +92,7 @@ struct SubsequenceCheckVisualizationView: View {
                 TextField("e.g., ahbgdc", text: $viewModel.mainStringInput)
                     .font(.system(size: 15, design: .monospaced))
                     .padding(Theme.Spacing.medium)
-                    .background(Color.white.opacity(0.9))
+                    .background(Theme.Colors.cardSurface)
                     .cornerRadius(Theme.CornerRadius.medium)
                     .overlay(
                         RoundedRectangle(cornerRadius: Theme.CornerRadius.medium)
@@ -113,7 +113,7 @@ struct SubsequenceCheckVisualizationView: View {
                 TextField("e.g., abc", text: $viewModel.subsequenceInput)
                     .font(.system(size: 15, design: .monospaced))
                     .padding(Theme.Spacing.medium)
-                    .background(Color.white.opacity(0.9))
+                    .background(Theme.Colors.cardSurface)
                     .cornerRadius(Theme.CornerRadius.medium)
                     .overlay(
                         RoundedRectangle(cornerRadius: Theme.CornerRadius.medium)
@@ -394,7 +394,7 @@ struct SubsequenceStepPanel: View {
                 }
             }
             .padding(Theme.Spacing.medium)
-            .background(Color.white.opacity(0.9))
+            .background(Theme.Colors.cardSurface)
             .cornerRadius(Theme.CornerRadius.medium)
             .shadow(color: Color.black.opacity(0.05), radius: 8, x: 0, y: 4)
         }
@@ -435,7 +435,7 @@ struct SubsequenceVisualizationView: View {
         .padding(Theme.Spacing.large)
         .background(
             RoundedRectangle(cornerRadius: Theme.CornerRadius.large)
-                .fill(Color.white.opacity(0.95))
+                .fill(Theme.Colors.cardSurfaceStrong)
                 .shadow(color: Color.black.opacity(0.08), radius: 12, x: 0, y: 6)
         )
     }
@@ -582,7 +582,7 @@ struct CharacterBoxView: View {
     
     private var backgroundColor: Color {
         switch state {
-        case .normal: return Color.white
+        case .normal: return Color(.systemBackground)
         case .current: return Color.blue.opacity(0.2)
         case .visited: return Color.gray.opacity(0.1)
         case .matched: return Color.green.opacity(0.25)

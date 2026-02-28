@@ -101,7 +101,7 @@ struct ZAlgorithmVisualizationView: View {
             TextField("e.g., AABAACAADAABAAABAA", text: $viewModel.textInput)
                 .font(.system(size: 15, design: .monospaced))
                 .padding(Theme.Spacing.medium)
-                .background(Color.white.opacity(0.9))
+                .background(Theme.Colors.cardSurface)
                 .cornerRadius(Theme.CornerRadius.medium)
                 .overlay(
                     RoundedRectangle(cornerRadius: Theme.CornerRadius.medium)
@@ -123,7 +123,7 @@ struct ZAlgorithmVisualizationView: View {
             TextField("e.g., AABA", text: $viewModel.patternInput)
                 .font(.system(size: 15, design: .monospaced))
                 .padding(Theme.Spacing.medium)
-                .background(Color.white.opacity(0.9))
+                .background(Theme.Colors.cardSurface)
                 .cornerRadius(Theme.CornerRadius.medium)
                 .overlay(
                     RoundedRectangle(cornerRadius: Theme.CornerRadius.medium)
@@ -492,7 +492,7 @@ struct ZAlgorithmStepPanel: View {
                 }
             }
             .padding(Theme.Spacing.medium)
-            .background(Color.white.opacity(0.9))
+            .background(Theme.Colors.cardSurface)
             .cornerRadius(Theme.CornerRadius.medium)
             .shadow(color: Color.black.opacity(0.05), radius: 8, x: 0, y: 4)
         }
@@ -627,7 +627,7 @@ struct ZAlgorithmVisualization: View {
                                         .font(.system(size: 20, weight: .bold, design: .monospaced))
                                         .foregroundColor(Theme.Colors.primaryText)
                                         .frame(width: 44, height: 50)
-                                        .background(Color.white)
+                                        .background(Color(.systemBackground))
                                         .cornerRadius(12)
                                         .overlay(
                                             RoundedRectangle(cornerRadius: 12)
@@ -715,7 +715,7 @@ struct ZAlgorithmVisualization: View {
         .padding(Theme.Spacing.large)
         .background(
             RoundedRectangle(cornerRadius: Theme.CornerRadius.large)
-                .fill(Color.white.opacity(0.95))
+                .fill(Theme.Colors.cardSurfaceStrong)
                 .shadow(color: Color.black.opacity(0.08), radius: 12, x: 0, y: 6)
         )
     }
@@ -754,7 +754,7 @@ struct TextCharacterView: View {
         } else if isMatched {
             return Color.green.opacity(0.25)
         } else {
-            return Color.white
+            return Color(.systemBackground)
         }
     }
     
@@ -857,7 +857,7 @@ struct CombinedStringCharacterView: View {
         } else if isSeparator {
             return Color.orange.opacity(0.1)
         } else {
-            return Color.white.opacity(0.9)
+            return Theme.Colors.cardSurface
         }
     }
     

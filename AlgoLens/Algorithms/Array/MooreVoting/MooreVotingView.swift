@@ -56,7 +56,7 @@ struct MooreVotingVisualizationView: View {
                                 TextField("e.g., 3,3,4,2,4,4,2,4,4", text: $viewModel.arrayInput)
                                     .font(.system(size: 15, design: .monospaced))
                                     .padding(Theme.Spacing.medium)
-                                    .background(Color.white.opacity(0.9))
+                                    .background(Theme.Colors.cardSurface)
                                     .cornerRadius(Theme.CornerRadius.medium)
                                     .overlay(
                                         RoundedRectangle(cornerRadius: Theme.CornerRadius.medium)
@@ -123,7 +123,7 @@ struct MooreVotingVisualizationView: View {
                                 Spacer()
                             }
                             .padding(Theme.Spacing.medium)
-                            .background(Color.white.opacity(0.9))
+                            .background(Theme.Colors.cardSurface)
                             .cornerRadius(Theme.CornerRadius.medium)
                         }
                         .padding(.horizontal, Theme.Spacing.large)
@@ -356,7 +356,7 @@ struct MooreVotingStepPanel: View {
                 }
             }
             .padding(Theme.Spacing.medium)
-            .background(Color.white.opacity(0.9))
+            .background(Theme.Colors.cardSurface)
             .cornerRadius(Theme.CornerRadius.medium)
             .shadow(color: Color.black.opacity(0.05), radius: 8, x: 0, y: 4)
         }
@@ -418,7 +418,7 @@ struct MooreVotingArrayElementView: View {
         } else if state == .checked {
             return Color.gray.opacity(0.08)
         }
-        return Color.white.opacity(0.95)
+        return Theme.Colors.cardSurfaceStrong
     }
     
     private var textColor: Color {

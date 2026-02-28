@@ -58,7 +58,7 @@ struct AnagramCheckVisualizationView: View {
                                 TextField("e.g., listen", text: $viewModel.string1Input)
                                     .font(.system(size: 15, design: .monospaced))
                                     .padding(Theme.Spacing.medium)
-                                    .background(Color.white.opacity(0.9))
+                                    .background(Theme.Colors.cardSurface)
                                     .cornerRadius(Theme.CornerRadius.medium)
                                     .overlay(
                                         RoundedRectangle(cornerRadius: Theme.CornerRadius.medium)
@@ -79,7 +79,7 @@ struct AnagramCheckVisualizationView: View {
                                 TextField("e.g., silent", text: $viewModel.string2Input)
                                     .font(.system(size: 15, design: .monospaced))
                                     .padding(Theme.Spacing.medium)
-                                    .background(Color.white.opacity(0.9))
+                                    .background(Theme.Colors.cardSurface)
                                     .cornerRadius(Theme.CornerRadius.medium)
                                     .overlay(
                                         RoundedRectangle(cornerRadius: Theme.CornerRadius.medium)
@@ -419,7 +419,7 @@ struct AnagramStepPanel: View {
                 }
             }
             .padding(Theme.Spacing.medium)
-            .background(Color.white.opacity(0.9))
+            .background(Theme.Colors.cardSurface)
             .cornerRadius(Theme.CornerRadius.medium)
             .shadow(color: Color.black.opacity(0.05), radius: 8, x: 0, y: 4)
         }
@@ -588,7 +588,7 @@ struct AnagramVisualizationView: View {
         .padding(Theme.Spacing.large)
         .background(
             RoundedRectangle(cornerRadius: Theme.CornerRadius.large)
-                .fill(Color.white.opacity(0.95))
+                .fill(Theme.Colors.cardSurfaceStrong)
                 .shadow(color: Color.black.opacity(0.08), radius: 12, x: 0, y: 6)
         )
     }
@@ -651,7 +651,7 @@ struct AnagramCharacterBox: View {
     
     private var backgroundColor: Color {
         switch state {
-        case .normal: return Color.white
+        case .normal: return Color(.systemBackground)
         case .current: return baseColor.opacity(0.2)
         case .processed, .verified: return Color.green.opacity(0.15)
         case .mismatch: return Color.red.opacity(0.15)

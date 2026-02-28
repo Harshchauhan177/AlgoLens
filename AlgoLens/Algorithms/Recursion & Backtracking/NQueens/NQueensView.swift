@@ -60,7 +60,7 @@ struct NQueensVisualizationView: View {
                                     .font(.system(size: 15, design: .monospaced))
                                     .keyboardType(.numberPad)
                                     .padding(Theme.Spacing.medium)
-                                    .background(Color.white.opacity(0.9))
+                                    .background(Theme.Colors.cardSurface)
                                     .cornerRadius(Theme.CornerRadius.medium)
                                     .overlay(
                                         RoundedRectangle(cornerRadius: Theme.CornerRadius.medium)
@@ -496,7 +496,7 @@ struct EnhancedChessBoardView: View {
             }
         }
         .padding(Theme.Spacing.medium)
-        .background(Color.white.opacity(0.95))
+        .background(Theme.Colors.cardSurfaceStrong)
         .cornerRadius(Theme.CornerRadius.large)
         .shadow(color: Color.black.opacity(0.1), radius: 20, x: 0, y: 10)
     }
@@ -642,7 +642,7 @@ struct NQueensStatisticsPanel: View {
             }
         }
         .padding(Theme.Spacing.medium)
-        .background(Color.white.opacity(0.9))
+        .background(Theme.Colors.cardSurface)
         .cornerRadius(Theme.CornerRadius.medium)
         .shadow(color: Color.black.opacity(0.05), radius: 8, x: 0, y: 4)
     }
@@ -710,7 +710,7 @@ struct NQueensStepPanel: View {
                 .cornerRadius(Theme.CornerRadius.small)
         }
         .padding(Theme.Spacing.medium)
-        .background(Color.white.opacity(0.9))
+        .background(Theme.Colors.cardSurface)
         .cornerRadius(Theme.CornerRadius.medium)
         .shadow(color: Color.black.opacity(0.05), radius: 8, x: 0, y: 4)
     }

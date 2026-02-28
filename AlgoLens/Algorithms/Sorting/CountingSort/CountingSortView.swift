@@ -58,7 +58,7 @@ struct CountingSortVisualizationView: View {
                                 TextField("e.g., 4,2,2,8,3,3,1", text: $viewModel.arrayInput)
                                     .font(.system(size: 15, design: .monospaced))
                                     .padding(Theme.Spacing.medium)
-                                    .background(Color.white.opacity(0.9))
+                                    .background(Theme.Colors.cardSurface)
                                     .cornerRadius(Theme.CornerRadius.medium)
                                     .overlay(
                                         RoundedRectangle(cornerRadius: Theme.CornerRadius.medium)
@@ -345,7 +345,7 @@ struct CountingSortStepInformationPanel: View {
                 }
             }
             .padding(Theme.Spacing.medium)
-            .background(Color.white.opacity(0.9))
+            .background(Theme.Colors.cardSurface)
             .cornerRadius(Theme.CornerRadius.medium)
             .shadow(color: Color.black.opacity(0.05), radius: 8, x: 0, y: 4)
         }
@@ -398,7 +398,7 @@ struct CountingSortArrayElementView: View {
     private var backgroundColor: Color {
         switch state {
         case .unchecked:
-            return Color.white.opacity(0.95)
+            return Theme.Colors.cardSurfaceStrong
         case .active:
             return Color.blue.opacity(0.1)
         case .current:

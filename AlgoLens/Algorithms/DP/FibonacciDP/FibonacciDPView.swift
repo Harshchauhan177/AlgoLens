@@ -91,7 +91,7 @@ struct FibonacciDPView: View {
                     .font(.system(size: 15, design: .monospaced))
                     .keyboardType(.numberPad)
                     .padding(Theme.Spacing.medium)
-                    .background(Color.white.opacity(0.9))
+                    .background(Theme.Colors.cardSurface)
                     .cornerRadius(Theme.CornerRadius.medium)
                     .overlay(RoundedRectangle(cornerRadius: Theme.CornerRadius.medium).stroke(Color.yellow.opacity(0.3), lineWidth: 1))
                     .focused($isInputFocused)
@@ -128,7 +128,7 @@ struct FibonacciDPView: View {
             }
         }
         .padding(Theme.Spacing.medium)
-        .background(Color.white.opacity(0.95)).cornerRadius(Theme.CornerRadius.medium)
+        .background(Theme.Colors.cardSurfaceStrong).cornerRadius(Theme.CornerRadius.medium)
         .shadow(color: .black.opacity(0.05), radius: 8, x: 0, y: 4)
         .padding(.horizontal, Theme.Spacing.large)
     }
@@ -143,7 +143,7 @@ struct FibonacciDPView: View {
                     .font(.system(size: 11, weight: .semibold, design: .monospaced)).foregroundColor(.blue)
             }
             Slider(value: $viewModel.animationSpeed, in: 0.2...2.0, step: 0.1).accentColor(.blue)
-        }.padding(Theme.Spacing.medium).background(Color.white.opacity(0.9)).cornerRadius(Theme.CornerRadius.medium)
+        }.padding(Theme.Spacing.medium).background(Theme.Colors.cardSurface).cornerRadius(Theme.CornerRadius.medium)
     }
 
     private var controlPanel: some View {
@@ -210,7 +210,7 @@ struct FibModeSwitcher: View {
                         .background(RoundedRectangle(cornerRadius: 10).fill(selectedMode == mode ? mode.color : Color.clear))
                     }.disabled(isDisabled)
                 }
-            }.padding(4).background(Color.white.opacity(0.9)).cornerRadius(14)
+            }.padding(4).background(Theme.Colors.cardSurface).cornerRadius(14)
                 .shadow(color: .black.opacity(0.06), radius: 8, x: 0, y: 4)
         }
     }
@@ -359,7 +359,7 @@ struct FibCachePanel: View {
                 }
             }
         }
-        .padding(Theme.Spacing.small).background(Color.white.opacity(0.9))
+        .padding(Theme.Spacing.small).background(Theme.Colors.cardSurface)
         .cornerRadius(Theme.CornerRadius.medium)
         .shadow(color: .black.opacity(0.05), radius: 6, x: 0, y: 3)
     }
@@ -413,7 +413,7 @@ struct FibTabulationView: View {
                             }
                         }.padding(Theme.Spacing.medium)
                     }
-                    .background(Color.white.opacity(0.9)).cornerRadius(Theme.CornerRadius.large)
+                    .background(Theme.Colors.cardSurface).cornerRadius(Theme.CornerRadius.large)
                     .shadow(color: .black.opacity(0.05), radius: 8, x: 0, y: 4)
                 }.padding(.horizontal, Theme.Spacing.small)
             }
@@ -605,7 +605,7 @@ struct FibStatsPanel: View {
                     FibStatBadge(title: "Space", value: "O(n)", color: .blue)
                 }
             }
-        }.padding(Theme.Spacing.medium).background(Color.white.opacity(0.9))
+        }.padding(Theme.Spacing.medium).background(Theme.Colors.cardSurface)
             .cornerRadius(Theme.CornerRadius.medium)
             .shadow(color: .black.opacity(0.05), radius: 8, x: 0, y: 4)
     }

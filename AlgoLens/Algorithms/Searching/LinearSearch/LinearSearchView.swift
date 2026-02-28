@@ -58,7 +58,7 @@ struct LinearSearchVisualizationView: View {
                                 TextField("e.g., 4,7,1,9,3,6", text: $viewModel.arrayInput)
                                     .font(.system(size: 15, design: .monospaced))
                                     .padding(Theme.Spacing.medium)
-                                    .background(Color.white.opacity(0.9))
+                                    .background(Theme.Colors.cardSurface)
                                     .cornerRadius(Theme.CornerRadius.medium)
                                     .overlay(
                                         RoundedRectangle(cornerRadius: Theme.CornerRadius.medium)
@@ -79,7 +79,7 @@ struct LinearSearchVisualizationView: View {
                                 TextField("e.g., 9", text: $viewModel.targetInput)
                                     .font(.system(size: 15, design: .monospaced))
                                     .padding(Theme.Spacing.medium)
-                                    .background(Color.white.opacity(0.9))
+                                    .background(Theme.Colors.cardSurface)
                                     .cornerRadius(Theme.CornerRadius.medium)
                                     .overlay(
                                         RoundedRectangle(cornerRadius: Theme.CornerRadius.medium)
@@ -358,7 +358,7 @@ struct StepInformationPanel: View {
                 }
             }
             .padding(Theme.Spacing.medium)
-            .background(Color.white.opacity(0.9))
+            .background(Theme.Colors.cardSurface)
             .cornerRadius(Theme.CornerRadius.medium)
             .shadow(color: Color.black.opacity(0.05), radius: 8, x: 0, y: 4)
         }
@@ -398,7 +398,7 @@ struct EnhancedArrayElementView: View {
     private var backgroundColor: Color {
         switch state {
         case .unchecked:
-            return Color.white.opacity(0.95)
+            return Theme.Colors.cardSurfaceStrong
         case .current:
             return Color.blue.opacity(0.15)
         case .checked:

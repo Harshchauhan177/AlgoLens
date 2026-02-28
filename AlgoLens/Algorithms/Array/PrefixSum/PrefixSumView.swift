@@ -56,7 +56,7 @@ struct PrefixSumVisualizationView: View {
                                 TextField("e.g., 1,2,3,4,5", text: $viewModel.arrayInput)
                                     .font(.system(size: 15, design: .monospaced))
                                     .padding(Theme.Spacing.medium)
-                                    .background(Color.white.opacity(0.9))
+                                    .background(Theme.Colors.cardSurface)
                                     .cornerRadius(Theme.CornerRadius.medium)
                                     .overlay(
                                         RoundedRectangle(cornerRadius: Theme.CornerRadius.medium)
@@ -180,7 +180,7 @@ struct PrefixSumVisualizationView: View {
                                     TextField("0", text: $viewModel.queryLeftInput)
                                         .font(.system(size: 15, design: .monospaced))
                                         .padding(Theme.Spacing.medium)
-                                        .background(Color.white.opacity(0.9))
+                                        .background(Theme.Colors.cardSurface)
                                         .cornerRadius(Theme.CornerRadius.medium)
                                         .overlay(
                                             RoundedRectangle(cornerRadius: Theme.CornerRadius.medium)
@@ -197,7 +197,7 @@ struct PrefixSumVisualizationView: View {
                                     TextField("\(viewModel.array.count - 1)", text: $viewModel.queryRightInput)
                                         .font(.system(size: 15, design: .monospaced))
                                         .padding(Theme.Spacing.medium)
-                                        .background(Color.white.opacity(0.9))
+                                        .background(Theme.Colors.cardSurface)
                                         .cornerRadius(Theme.CornerRadius.medium)
                                         .overlay(
                                             RoundedRectangle(cornerRadius: Theme.CornerRadius.medium)
@@ -394,7 +394,7 @@ struct PrefixSumStepPanel: View {
                 }
             }
             .padding(Theme.Spacing.medium)
-            .background(Color.white.opacity(0.9))
+            .background(Theme.Colors.cardSurface)
             .cornerRadius(Theme.CornerRadius.medium)
             .shadow(color: Color.black.opacity(0.05), radius: 8, x: 0, y: 4)
         }
@@ -441,7 +441,7 @@ struct PrefixSumArrayElementView: View {
             return Color.purple.opacity(0.2)
         }
         switch state {
-        case .unchecked: return Color.white.opacity(0.95)
+        case .unchecked: return Theme.Colors.cardSurfaceStrong
         case .current: return Color.blue.opacity(0.15)
         case .completed: return Color.green.opacity(0.1)
         }

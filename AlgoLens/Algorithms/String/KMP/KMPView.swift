@@ -59,7 +59,7 @@ struct KMPVisualizationView: View {
                                 TextField("e.g., ABABDABACDABABCABAB", text: $viewModel.textInput)
                                     .font(.system(size: 15, design: .monospaced))
                                     .padding(Theme.Spacing.medium)
-                                    .background(Color.white.opacity(0.9))
+                                    .background(Theme.Colors.cardSurface)
                                     .cornerRadius(Theme.CornerRadius.medium)
                                     .overlay(
                                         RoundedRectangle(cornerRadius: Theme.CornerRadius.medium)
@@ -80,7 +80,7 @@ struct KMPVisualizationView: View {
                                 TextField("e.g., ABABCABAB", text: $viewModel.patternInput)
                                     .font(.system(size: 15, design: .monospaced))
                                     .padding(Theme.Spacing.medium)
-                                    .background(Color.white.opacity(0.9))
+                                    .background(Theme.Colors.cardSurface)
                                     .cornerRadius(Theme.CornerRadius.medium)
                                     .overlay(
                                         RoundedRectangle(cornerRadius: Theme.CornerRadius.medium)
@@ -397,7 +397,7 @@ struct KMPStepPanel: View {
                 }
             }
             .padding(Theme.Spacing.medium)
-            .background(Color.white.opacity(0.9))
+            .background(Theme.Colors.cardSurface)
             .cornerRadius(Theme.CornerRadius.medium)
             .shadow(color: Color.black.opacity(0.05), radius: 8, x: 0, y: 4)
         }
@@ -573,7 +573,7 @@ struct KMPStringVisualizationView: View {
         .padding(Theme.Spacing.large)
         .background(
             RoundedRectangle(cornerRadius: Theme.CornerRadius.large)
-                .fill(Color.white.opacity(0.95))
+                .fill(Theme.Colors.cardSurfaceStrong)
                 .shadow(color: Color.black.opacity(0.08), radius: 12, x: 0, y: 6)
         )
     }
@@ -602,7 +602,7 @@ struct KMPStringVisualizationView: View {
     private func backgroundColorForChar(at index: Int) -> Color {
         let state = characterState(index)
         switch state {
-        case .normal: return Color.white
+        case .normal: return Color(.systemBackground)
         case .comparing: return Color.blue.opacity(0.1)
         case .current: return Color.blue.opacity(0.2)
         case .matching: return Color.green.opacity(0.15)
@@ -664,7 +664,7 @@ struct KMPStringVisualizationView: View {
     private func backgroundColorForPattern(at index: Int) -> Color {
         if index == patternIndex { return Color.blue.opacity(0.2) }
         if index < patternIndex { return Color.green.opacity(0.15) }
-        return Color.white
+        return Color(.systemBackground)
     }
     
     private func borderColorForPattern(at index: Int) -> Color {
@@ -717,7 +717,7 @@ struct LPSExplanationPanel: View {
                     .animation(.spring(response: 0.3, dampingFraction: 0.7), value: isExpanded)
             }
             .padding(Theme.Spacing.medium)
-            .background(Color.white.opacity(0.95))
+            .background(Theme.Colors.cardSurfaceStrong)
             .cornerRadius(Theme.CornerRadius.medium)
             .shadow(color: Color.black.opacity(0.05), radius: 8, x: 0, y: 4)
             .contentShape(Rectangle())
@@ -880,7 +880,7 @@ struct LPSExplanationPanel: View {
                 }
                 .padding(Theme.Spacing.medium)
                 .padding(.top, Theme.Spacing.small)
-                .background(Color.white.opacity(0.9))
+                .background(Theme.Colors.cardSurface)
                 .cornerRadius(Theme.CornerRadius.medium)
                 .shadow(color: Color.black.opacity(0.05), radius: 8, x: 0, y: 4)
                 .transition(.opacity.combined(with: .scale(scale: 0.95, anchor: .top)))

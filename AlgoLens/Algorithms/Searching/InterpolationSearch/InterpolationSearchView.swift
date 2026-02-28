@@ -58,7 +58,7 @@ struct InterpolationSearchView: View {
                                 TextField("e.g., 10,20,30,40,50", text: $viewModel.arrayInput)
                                     .font(.system(size: 15, design: .monospaced))
                                     .padding(Theme.Spacing.medium)
-                                    .background(Color.white.opacity(0.9))
+                                    .background(Theme.Colors.cardSurface)
                                     .cornerRadius(Theme.CornerRadius.medium)
                                     .overlay(
                                         RoundedRectangle(cornerRadius: Theme.CornerRadius.medium)
@@ -79,7 +79,7 @@ struct InterpolationSearchView: View {
                                 TextField("e.g., 30", text: $viewModel.targetInput)
                                     .font(.system(size: 15, design: .monospaced))
                                     .padding(Theme.Spacing.medium)
-                                    .background(Color.white.opacity(0.9))
+                                    .background(Theme.Colors.cardSurface)
                                     .cornerRadius(Theme.CornerRadius.medium)
                                     .overlay(
                                         RoundedRectangle(cornerRadius: Theme.CornerRadius.medium)
@@ -368,7 +368,7 @@ struct InterpolationSearchStepInformationPanel: View {
                 }
             }
             .padding(Theme.Spacing.medium)
-            .background(Color.white.opacity(0.9))
+            .background(Theme.Colors.cardSurface)
             .cornerRadius(Theme.CornerRadius.medium)
             .shadow(color: Color.black.opacity(0.05), radius: 8, x: 0, y: 4)
         }
@@ -429,7 +429,7 @@ struct InterpolationSearchArrayElementView: View {
     private var backgroundColor: Color {
         switch state {
         case .unchecked:
-            return Color.white.opacity(0.95)
+            return Theme.Colors.cardSurfaceStrong
         case .current:
             return Color.purple.opacity(0.15)
         case .inRange:
