@@ -16,6 +16,7 @@ class AlgorithmDetailViewModel: ObservableObject {
     @Published var showVisualization: Bool = false
     
     let algorithm: Algorithm
+    private let progressManager = UserProgressManager.shared
     
     // MARK: - Tab Enum
     enum DetailTab: String, CaseIterable {
@@ -39,6 +40,8 @@ class AlgorithmDetailViewModel: ObservableObject {
     init(algorithm: Algorithm) {
         self.algorithm = algorithm
         self.content = AlgorithmContent.content(for: algorithm)
+        // Track algorithm viewed
+        UserProgressManager.shared.trackAlgorithmViewed(algorithm.name, categoryName: algorithm.category.name)
     }
     
     // MARK: - Actions
@@ -50,5 +53,7 @@ class AlgorithmDetailViewModel: ObservableObject {
     
     func startVisualization() {
         showVisualization = true
+        // Track visualization started
+        progressManager.trackVisualizationStarted(algorithm.name)
     }
 }

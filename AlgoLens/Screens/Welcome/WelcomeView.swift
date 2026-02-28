@@ -223,7 +223,7 @@ struct WelcomeView: View {
             }
         }
         .fullScreenCover(isPresented: $viewModel.isNavigatingToHome) {
-            HomeView()
+            MainTabView()
         }
     }
 }

@@ -19,6 +19,7 @@ class QuizViewModel: ObservableObject {
     @Published var showResult: Bool = false
     
     let algorithm: Algorithm
+    private let progressManager = UserProgressManager.shared
     
     // MARK: - Computed Properties
     var currentQuestion: QuizQuestion {
@@ -85,6 +86,14 @@ class QuizViewModel: ObservableObject {
         
         withAnimation(.easeInOut(duration: 0.3)) {
             if isLastQuestion {
+                // Track quiz completion
+                let result = getResult()
+                progressManager.trackQuizCompleted(
+                    algorithmName: algorithm.name,
+                    categoryName: algorithm.category.name,
+                    score: result.score,
+                    totalQuestions: result.totalQuestions
+                )
                 // Show results
                 showResult = true
             } else {
