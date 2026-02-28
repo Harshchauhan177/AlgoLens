@@ -1,15 +1,15 @@
 //
-//  DynamicProgrammingViewModel.swift
-//  DPLens
+//  DPAlgorithmsViewModel.swift
+//  AlgoLens
 //
-//  Created by harsh chauhan on 25/02/26.
+//  Created by harsh chauhan on 28/02/26.
 //
 
 import SwiftUI
 import Combine
 
 @MainActor
-class DynamicProgrammingViewModel: ObservableObject {
+class DPAlgorithmsViewModel: ObservableObject {
     @Published var algorithms: [Algorithm] = []
     @Published var selectedAlgorithm: Algorithm?
     
@@ -19,7 +19,7 @@ class DynamicProgrammingViewModel: ObservableObject {
     
     // MARK: - Data Loading
     private func loadAlgorithms() {
-        algorithms = Algorithm.dynamicProgrammingAlgorithms
+        algorithms = Algorithm.DPAlgorithms
     }
     
     // MARK: - User Actions

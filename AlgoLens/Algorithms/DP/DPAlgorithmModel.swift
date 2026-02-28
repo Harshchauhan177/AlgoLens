@@ -1,15 +1,15 @@
 //
-//  DynamicProgrammingAlgorithmModel.swift
-//  DPLens
+//  DPAlgorithmModel.swift
+//  AlgoLens
 //
-//  Created by harsh chauhan on 25/02/26.
+//  Created by harsh chauhan on 28/02/26.
 //
 
 import Foundation
 
-// MARK: - Dynamic Programming Algorithms Data
+// MARK: - DP Algorithms Data
 extension Algorithm {
-    static let dynamicProgrammingAlgorithms: [Algorithm] = [
+    static let DPAlgorithms: [Algorithm] = [
         Algorithm(
             name: "Fibonacci (DP)",
             description: "Calculate Fibonacci numbers using dynamic programming",
