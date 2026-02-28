@@ -157,7 +157,7 @@ struct SearchBar: View {
         }
         .padding(.horizontal, Theme.Spacing.medium + 2)
         .padding(.vertical, Theme.Spacing.medium)
-        .background(Color.white.opacity(0.9))
+        .background(Theme.Colors.cardBackground)
         .cornerRadius(Theme.CornerRadius.medium + 2)
         .overlay(
             RoundedRectangle(cornerRadius: Theme.CornerRadius.medium + 2)
@@ -174,65 +174,107 @@ struct EnhancedCategoryCard: View {
     @State private var isHovered = false
     
     var body: some View {
-        VStack(alignment: .leading, spacing: Theme.Spacing.medium) {
-            // Icon with gradient background
+        VStack(alignment: .leading, spacing: 14) {
+            // Icon with gradient background + decorative ring
             ZStack {
+                // Outer decorative ring
+                Circle()
+                    .stroke(
+                        LinearGradient(
+                            colors: [
+                                categoryColor.opacity(0.3),
+                                categoryColor.opacity(0.08)
+                            ],
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        ),
+                        lineWidth: 2
+                    )
+                    .frame(width: 68, height: 68)
+                
                 Circle()
                     .fill(
                         LinearGradient(
                             colors: [
-                                categoryColor.opacity(0.15),
-                                categoryColor.opacity(0.25)
+                                categoryColor.opacity(0.18),
+                                categoryColor.opacity(0.08)
                             ],
                             startPoint: .topLeading,
                             endPoint: .bottomTrailing
                         )
                     )
-                    .frame(width: 64, height: 64)
+                    .frame(width: 58, height: 58)
                 
                 Image(systemName: category.icon)
-                    .font(.system(size: 30, weight: .semibold))
-                    .foregroundColor(categoryColor)
+                    .font(.system(size: 26, weight: .semibold))
+                    .foregroundStyle(
+                        LinearGradient(
+                            colors: [categoryColor, categoryColor.opacity(0.7)],
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        )
+                    )
             }
             
             // Text Content
-            VStack(alignment: .leading, spacing: Theme.Spacing.small) {
+            VStack(alignment: .leading, spacing: 6) {
                 Text(category.name)
-                    .font(.system(size: 17, weight: .bold, design: .rounded))
+                    .font(.system(size: 16, weight: .bold, design: .rounded))
                     .foregroundColor(Theme.Colors.primaryText)
                     .lineLimit(2)
                     .minimumScaleFactor(0.85)
+                    .multilineTextAlignment(.leading)
                 
                 Text(category.description)
-                    .font(.system(size: 13, weight: .medium))
+                    .font(.system(size: 12, weight: .medium))
                     .foregroundColor(Theme.Colors.secondaryText)
                     .lineLimit(2)
                     .minimumScaleFactor(0.9)
+                    .multilineTextAlignment(.leading)
             }
             
-            Spacer()
+            Spacer(minLength: 0)
             
-            // "Explore" indicator
-            HStack {
+            // Pill-shaped "Explore" button
+            HStack(spacing: 6) {
                 Text("Explore")
-                    .font(.system(size: 12, weight: .semibold))
-                    .foregroundColor(categoryColor)
+                    .font(.system(size: 12, weight: .bold, design: .rounded))
                 
                 Image(systemName: "arrow.right")
-                    .font(.system(size: 11, weight: .bold))
-                    .foregroundColor(categoryColor)
+                    .font(.system(size: 10, weight: .bold))
             }
+            .foregroundColor(categoryColor)
+            .padding(.horizontal, 14)
+            .padding(.vertical, 7)
+            .background(
+                Capsule()
+                    .fill(categoryColor.opacity(0.12))
+            )
+            .overlay(
+                Capsule()
+                    .stroke(categoryColor.opacity(0.2), lineWidth: 1)
+            )
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-        .padding(Theme.Spacing.medium + 2)
+        .padding(18)
         .background(
             ZStack {
-                Color.white.opacity(0.95)
+                // Base card background (dark mode aware)
+                RoundedRectangle(cornerRadius: Theme.CornerRadius.large + 4)
+                    .fill(Theme.Colors.cardBackground)
                 
-                // Subtle gradient overlay
+                // Decorative blob in top-right corner
+                Circle()
+                    .fill(categoryColor.opacity(0.06))
+                    .frame(width: 100, height: 100)
+                    .offset(x: 50, y: -40)
+                    .clipped()
+                
+                // Subtle gradient overlay from category color
                 LinearGradient(
                     colors: [
-                        categoryColor.opacity(0.03),
+                        categoryColor.opacity(0.04),
+                        Color.clear,
                         Color.clear
                     ],
                     startPoint: .topLeading,
@@ -240,23 +282,23 @@ struct EnhancedCategoryCard: View {
                 )
             }
         )
-        .cornerRadius(Theme.CornerRadius.large)
+        .clipShape(RoundedRectangle(cornerRadius: Theme.CornerRadius.large + 4))
         .overlay(
-            RoundedRectangle(cornerRadius: Theme.CornerRadius.large)
+            RoundedRectangle(cornerRadius: Theme.CornerRadius.large + 4)
                 .stroke(
                     LinearGradient(
                         colors: [
-                            categoryColor.opacity(0.2),
-                            categoryColor.opacity(0.1)
+                            categoryColor.opacity(0.25),
+                            categoryColor.opacity(0.08)
                         ],
                         startPoint: .topLeading,
                         endPoint: .bottomTrailing
                     ),
-                    lineWidth: 1.5
+                    lineWidth: 1
                 )
         )
-        .shadow(color: categoryColor.opacity(0.15), radius: 12, x: 0, y: 6)
-        .shadow(color: Color.black.opacity(0.05), radius: 4, x: 0, y: 2)
+        .shadow(color: categoryColor.opacity(0.12), radius: 16, x: 0, y: 8)
+        .shadow(color: Color.black.opacity(0.04), radius: 4, x: 0, y: 2)
     }
     
     private var categoryColor: Color {

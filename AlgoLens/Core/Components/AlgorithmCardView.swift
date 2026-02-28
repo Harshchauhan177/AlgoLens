@@ -14,21 +14,33 @@ struct AlgorithmCardView: View {
     
     var body: some View {
         HStack(spacing: Theme.Spacing.medium) {
-            // Icon
+            // Icon with gradient background
             ZStack {
                 Circle()
-                    .fill(accentColor.opacity(0.15))
-                    .frame(width: 50, height: 50)
+                    .fill(
+                        LinearGradient(
+                            colors: [accentColor.opacity(0.18), accentColor.opacity(0.08)],
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        )
+                    )
+                    .frame(width: 52, height: 52)
                 
                 Image(systemName: algorithm.icon)
-                    .font(.system(size: 22))
-                    .foregroundColor(accentColor)
+                    .font(.system(size: 22, weight: .semibold))
+                    .foregroundStyle(
+                        LinearGradient(
+                            colors: [accentColor, accentColor.opacity(0.7)],
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        )
+                    )
             }
             
             // Text Content
-            VStack(alignment: .leading, spacing: Theme.Spacing.small / 2) {
+            VStack(alignment: .leading, spacing: 5) {
                 Text(algorithm.name)
-                    .font(.system(size: 17, weight: .semibold, design: .rounded))
+                    .font(.system(size: 17, weight: .bold, design: .rounded))
                     .foregroundColor(Theme.Colors.primaryText)
                 
                 Text(algorithm.description)
@@ -36,13 +48,13 @@ struct AlgorithmCardView: View {
                     .foregroundColor(Theme.Colors.secondaryText)
                     .lineLimit(1)
                 
-                // Complexity Badge (if available)
+                // Complexity Badges
                 if let complexity = algorithm.complexity {
                     HStack(spacing: Theme.Spacing.small) {
                         AlgorithmComplexityBadge(label: "Time", value: complexity.time, accentColor: accentColor)
                         AlgorithmComplexityBadge(label: "Space", value: complexity.space, accentColor: accentColor)
                     }
-                    .padding(.top, 2)
+                    .padding(.top, 3)
                 }
             }
             
@@ -51,12 +63,37 @@ struct AlgorithmCardView: View {
             // Chevron
             Image(systemName: "chevron.right")
                 .font(.system(size: 14, weight: .semibold))
-                .foregroundColor(Theme.Colors.secondaryText.opacity(0.5))
+                .foregroundColor(Theme.Colors.secondaryText.opacity(0.4))
         }
         .padding(Theme.Spacing.medium)
-        .background(Color.white.opacity(0.9))
-        .cornerRadius(Theme.CornerRadius.medium)
-        .shadow(color: Color.black.opacity(0.06), radius: 10, x: 0, y: 4)
+        .background(
+            RoundedRectangle(cornerRadius: Theme.CornerRadius.large)
+                .fill(Color(.systemBackground).opacity(0.92))
+        )
+        .overlay(
+            RoundedRectangle(cornerRadius: Theme.CornerRadius.large)
+                .stroke(Color(.separator).opacity(0.15), lineWidth: 1)
+        )
+        .overlay(
+            // Left accent bar
+            HStack {
+                RoundedRectangle(cornerRadius: 2)
+                    .fill(
+                        LinearGradient(
+                            colors: [accentColor.opacity(0.7), accentColor.opacity(0.3)],
+                            startPoint: .top,
+                            endPoint: .bottom
+                        )
+                    )
+                    .frame(width: 4)
+                    .padding(.vertical, 12)
+                Spacer()
+            }
+            .padding(.leading, 6)
+        )
+        .cornerRadius(Theme.CornerRadius.large)
+        .shadow(color: Color.black.opacity(0.05), radius: 8, x: 0, y: 3)
+        .shadow(color: accentColor.opacity(0.06), radius: 12, x: 0, y: 6)
     }
 }
 
@@ -73,13 +110,17 @@ struct AlgorithmComplexityBadge: View {
                 .foregroundColor(Theme.Colors.secondaryText)
             
             Text(value)
-                .font(.system(size: 11, weight: .semibold, design: .monospaced))
+                .font(.system(size: 11, weight: .bold, design: .monospaced))
                 .foregroundColor(accentColor)
         }
-        .padding(.horizontal, 8)
-        .padding(.vertical, 4)
-        .background(accentColor.opacity(0.08))
+        .padding(.horizontal, 9)
+        .padding(.vertical, 5)
+        .background(accentColor.opacity(0.07))
         .cornerRadius(6)
+        .overlay(
+            RoundedRectangle(cornerRadius: 6)
+                .stroke(accentColor.opacity(0.1), lineWidth: 0.5)
+        )
     }
 }
 
@@ -88,6 +129,7 @@ struct AlgorithmCardButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .scaleEffect(configuration.isPressed ? 0.97 : 1.0)
+            .opacity(configuration.isPressed ? 0.92 : 1.0)
             .animation(.easeInOut(duration: 0.15), value: configuration.isPressed)
     }
 }

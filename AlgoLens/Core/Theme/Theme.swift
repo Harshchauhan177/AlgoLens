@@ -17,6 +17,11 @@ struct Theme {
         static let primaryText = Color.primary
         static let secondaryText = Color.secondary
         static let accent = Color.blue
+        
+        // Dark-mode aware surface colors
+        static let cardBackground = Color(.systemBackground).opacity(0.95)
+        static let elevatedBackground = Color(.secondarySystemBackground)
+        static let cardBorder = Color(.separator).opacity(0.3)
     }
     
     // MARK: - Fonts

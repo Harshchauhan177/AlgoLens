@@ -117,7 +117,7 @@ struct FeaturePill: View {
         }
         .frame(maxWidth: .infinity)
         .padding(.vertical, Theme.Spacing.medium)
-        .background(Color.white.opacity(0.7))
+        .background(Color(.systemBackground).opacity(0.7))
         .cornerRadius(Theme.CornerRadius.medium)
         .shadow(color: Color.black.opacity(0.05), radius: 8, x: 0, y: 4)
     }

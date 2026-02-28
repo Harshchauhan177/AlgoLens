@@ -196,7 +196,7 @@ struct TimelineStepCard: View {
             }
             .padding(Theme.Spacing.medium)
             .frame(maxWidth: .infinity, alignment: .leading)
-            .background(Color.white.opacity(0.85))
+            .background(Color(.systemBackground).opacity(0.85))
             .cornerRadius(Theme.CornerRadius.medium)
             .shadow(color: Color.black.opacity(0.04), radius: 6, x: 0, y: 3)
             .overlay(

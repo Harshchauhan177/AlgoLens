@@ -106,14 +106,7 @@ struct PseudocodeTabView: View {
                 }
                 .frame(height: 44)
                 .background(
-                    LinearGradient(
-                        colors: [
-                            Color(white: 0.96),
-                            Color(white: 0.94)
-                        ],
-                        startPoint: .top,
-                        endPoint: .bottom
-                    )
+                    Color(.secondarySystemBackground)
                 )
                 
                 Divider()
@@ -133,9 +126,9 @@ struct PseudocodeTabView: View {
                 }
                 .frame(maxWidth: .infinity)
                 .frame(minHeight: 220)
-                .background(Color(white: 0.99))
+                .background(Color(.systemBackground))
             }
-            .background(Color(white: 0.99))
+            .background(Color(.systemBackground))
             .cornerRadius(Theme.CornerRadius.large)
             .overlay(
                 RoundedRectangle(cornerRadius: Theme.CornerRadius.large)
@@ -221,7 +214,7 @@ struct LanguagePillButton: View {
                             endPoint: .bottomTrailing
                         )
                     } else {
-                        Color.white.opacity(0.9)
+                        Color(.systemBackground).opacity(0.9)
                     }
                 }
             )

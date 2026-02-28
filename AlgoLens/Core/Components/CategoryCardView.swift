@@ -20,8 +20,8 @@ struct CategoryCardView: View {
                     .fill(
                         LinearGradient(
                             colors: [
-                                categoryColor.opacity(0.15),
-                                categoryColor.opacity(0.25)
+                                categoryColor.opacity(0.18),
+                                categoryColor.opacity(0.08)
                             ],
                             startPoint: .topLeading,
                             endPoint: .bottomTrailing
@@ -31,7 +31,13 @@ struct CategoryCardView: View {
                 
                 Image(systemName: category.icon)
                     .font(.system(size: 30, weight: .semibold))
-                    .foregroundColor(categoryColor)
+                    .foregroundStyle(
+                        LinearGradient(
+                            colors: [categoryColor, categoryColor.opacity(0.7)],
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        )
+                    )
             }
             
             // Text Content
@@ -52,26 +58,30 @@ struct CategoryCardView: View {
             Spacer()
             
             // "Explore" indicator
-            HStack {
+            HStack(spacing: 6) {
                 Text("Explore")
-                    .font(.system(size: 12, weight: .semibold))
+                    .font(.system(size: 12, weight: .bold, design: .rounded))
                     .foregroundColor(categoryColor)
                 
                 Image(systemName: "arrow.right")
                     .font(.system(size: 11, weight: .bold))
                     .foregroundColor(categoryColor)
             }
+            .padding(.horizontal, 12)
+            .padding(.vertical, 6)
+            .background(categoryColor.opacity(0.08))
+            .cornerRadius(8)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(18)
         .background(
             ZStack {
-                Color.white.opacity(0.95)
+                Color(.systemBackground).opacity(0.92)
                 
                 // Subtle gradient overlay
                 LinearGradient(
                     colors: [
-                        categoryColor.opacity(0.03),
+                        categoryColor.opacity(0.04),
                         Color.clear
                     ],
                     startPoint: .topLeading,
@@ -79,23 +89,23 @@ struct CategoryCardView: View {
                 )
             }
         )
-        .cornerRadius(16)
+        .cornerRadius(18)
         .overlay(
-            RoundedRectangle(cornerRadius: 16)
+            RoundedRectangle(cornerRadius: 18)
                 .stroke(
                     LinearGradient(
                         colors: [
                             categoryColor.opacity(0.2),
-                            categoryColor.opacity(0.1)
+                            categoryColor.opacity(0.08)
                         ],
                         startPoint: .topLeading,
                         endPoint: .bottomTrailing
                     ),
-                    lineWidth: 1.5
+                    lineWidth: 1
                 )
         )
-        .shadow(color: categoryColor.opacity(0.15), radius: 12, x: 0, y: 6)
-        .shadow(color: Color.black.opacity(0.05), radius: 4, x: 0, y: 2)
+        .shadow(color: categoryColor.opacity(0.12), radius: 12, x: 0, y: 6)
+        .shadow(color: Color.black.opacity(0.04), radius: 4, x: 0, y: 2)
     }
     
     private var categoryColor: Color {

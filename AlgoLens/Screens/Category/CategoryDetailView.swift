@@ -254,7 +254,7 @@ struct FeaturePreviewCard: View {
             Spacer()
         }
         .padding(Theme.Spacing.medium)
-        .background(Color.white.opacity(0.9))
+        .background(Color(.systemBackground).opacity(0.9))
         .cornerRadius(Theme.CornerRadius.large)
         .overlay(
             RoundedRectangle(cornerRadius: Theme.CornerRadius.large)

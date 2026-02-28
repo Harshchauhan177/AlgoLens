@@ -255,7 +255,7 @@ struct EnhancedTabButton: View {
                             endPoint: .bottom
                         )
                     } else {
-                        Color.white.opacity(0.6)
+                        Color(.systemBackground).opacity(0.6)
                     }
                 }
             )
