@@ -12,8 +12,19 @@ struct Theme {
     struct Colors {
         static let primaryGradientStart = Color(red: 0.4, green: 0.5, blue: 0.9)
         static let primaryGradientEnd = Color(red: 0.6, green: 0.3, blue: 0.8)
-        static let backgroundGradientStart = Color(red: 0.95, green: 0.97, blue: 1.0)
-        static let backgroundGradientEnd = Color(red: 0.98, green: 0.95, blue: 1.0)
+        
+        // Adaptive background gradient for light/dark mode
+        static let backgroundGradientStart = Color(UIColor { traitCollection in
+            traitCollection.userInterfaceStyle == .dark
+                ? UIColor(red: 0.08, green: 0.08, blue: 0.12, alpha: 1.0)
+                : UIColor(red: 0.95, green: 0.97, blue: 1.0, alpha: 1.0)
+        })
+        static let backgroundGradientEnd = Color(UIColor { traitCollection in
+            traitCollection.userInterfaceStyle == .dark
+                ? UIColor(red: 0.10, green: 0.07, blue: 0.14, alpha: 1.0)
+                : UIColor(red: 0.98, green: 0.95, blue: 1.0, alpha: 1.0)
+        })
+        
         static let primaryText = Color.primary
         static let secondaryText = Color.secondary
         static let accent = Color.blue

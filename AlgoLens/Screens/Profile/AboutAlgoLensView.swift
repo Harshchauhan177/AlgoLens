@@ -9,6 +9,7 @@ import SwiftUI
 
 struct AboutAlgoLensView: View {
     @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject private var appearanceManager: AppearanceManager
     
     private var appVersion: String {
         Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0"

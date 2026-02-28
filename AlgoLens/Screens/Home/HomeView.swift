@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     @StateObject private var viewModel = HomeViewModel()
+    @EnvironmentObject private var appearanceManager: AppearanceManager
     @State private var animateCards = false
     
     var body: some View {

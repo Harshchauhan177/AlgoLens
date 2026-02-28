@@ -86,6 +86,7 @@ struct ProfileView: View {
             }
             .sheet(isPresented: $showAboutSheet) {
                 AboutAlgoLensView()
+                    .environmentObject(appearanceManager)
             }
         }
     }
