@@ -139,7 +139,7 @@ struct QuizView: View {
                                 .foregroundColor(viewModel.canSubmit ? .white : Theme.Colors.secondaryText.opacity(0.6))
                                 .frame(maxWidth: .infinity)
                                 .padding(.vertical, Theme.Spacing.medium + 2)
-                                .background(viewModel.canSubmit ? Color.green : Color.gray.opacity(0.3))
+                                .background(viewModel.canSubmit ? Color.green : Theme.Colors.cardSurface.opacity(0.5))
                                 .cornerRadius(Theme.CornerRadius.large)
                                 .shadow(color: viewModel.canSubmit ? Color.green.opacity(0.4) : Color.clear, radius: 15, x: 0, y: 8)
                             }
@@ -148,7 +148,7 @@ struct QuizView: View {
                     }
                     .padding(.horizontal, Theme.Spacing.large)
                     .padding(.vertical, Theme.Spacing.medium)
-                    .background(Color.white.opacity(0.5))
+                    .background(Theme.Colors.cardSurface.opacity(0.8))
                 }
             }
         }
@@ -180,7 +180,7 @@ struct QuestionCard: View {
         }
         .padding(Theme.Spacing.large)
         .frame(maxWidth: .infinity, alignment: .leading)
-        .background(Color.white.opacity(0.95))
+        .background(Theme.Colors.cardSurfaceStrong)
         .cornerRadius(Theme.CornerRadius.large)
         .shadow(color: Color.black.opacity(0.08), radius: 12, x: 0, y: 6)
         .padding(.horizontal, Theme.Spacing.large)
@@ -210,7 +210,7 @@ struct AnswerOptionCard: View {
         } else if isSelected {
             return Color.blue.opacity(0.1)
         }
-        return Color.white.opacity(0.9)
+        return Theme.Colors.cardSurface
     }
     
     private var borderColor: Color {
@@ -223,7 +223,7 @@ struct AnswerOptionCard: View {
         } else if isSelected {
             return Color.blue
         }
-        return Color.gray.opacity(0.3)
+        return Theme.Colors.cardBorder
     }
     
     private var icon: String? {
@@ -355,6 +355,7 @@ struct QuizResultView: View {
                     .font(.system(size: 80))
                     .foregroundColor(resultColor)
                     .padding(.top, Theme.Spacing.extraLarge)
+                    .shadow(color: resultColor.opacity(0.4), radius: 20, x: 0, y: 10)
                 
                 // Score Display
                 VStack(spacing: Theme.Spacing.small) {
@@ -458,7 +459,7 @@ struct StatCard: View {
         }
         .frame(maxWidth: .infinity)
         .padding(.vertical, Theme.Spacing.large)
-        .background(Color.white.opacity(0.9))
+        .background(Theme.Colors.cardSurfaceStrong)
         .cornerRadius(Theme.CornerRadius.large)
         .shadow(color: Color.black.opacity(0.06), radius: 10, x: 0, y: 5)
     }
