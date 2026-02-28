@@ -9,9 +9,13 @@ import SwiftUI
 
 @main
 struct AlgoLensApp: App {
+    @StateObject private var appearanceManager = AppearanceManager.shared
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(appearanceManager)
+                .preferredColorScheme(appearanceManager.isDarkMode ? .dark : .light)
         }
     }
 }

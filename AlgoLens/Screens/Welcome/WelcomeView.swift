@@ -9,6 +9,7 @@ import SwiftUI
 
 struct WelcomeView: View {
     @StateObject private var viewModel = WelcomeViewModel()
+    @EnvironmentObject private var appearanceManager: AppearanceManager
     @State private var logoAppeared = false
     @State private var textAppeared = false
     @State private var pillsAppeared = false
@@ -224,6 +225,8 @@ struct WelcomeView: View {
         }
         .fullScreenCover(isPresented: $viewModel.isNavigatingToHome) {
             MainTabView()
+                .environmentObject(appearanceManager)
+                .preferredColorScheme(appearanceManager.isDarkMode ? .dark : .light)
         }
     }
 }

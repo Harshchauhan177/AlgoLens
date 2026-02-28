@@ -10,6 +10,7 @@ import StoreKit
 
 struct ProfileView: View {
     @StateObject private var progress = UserProgressManager.shared
+    @EnvironmentObject private var appearanceManager: AppearanceManager
     @State private var animateContent = false
     @State private var showResetAlert = false
     @State private var showAboutSheet = false
@@ -443,6 +444,26 @@ struct ProfileView: View {
                 .padding(.horizontal, Theme.Spacing.large)
             
             VStack(spacing: 0) {
+                // Appearance
+                VStack(alignment: .leading, spacing: Theme.Spacing.small) {
+                    Text("Appearance")
+                        .font(.system(size: 13, weight: .medium, design: .rounded))
+                        .foregroundColor(Theme.Colors.secondaryText)
+                        .padding(.horizontal, Theme.Spacing.medium)
+                        .padding(.top, 14)
+                    
+                    Toggle(isOn: $appearanceManager.isDarkMode) {
+                        Text("Dark Appearance")
+                            .font(.system(size: 16, weight: .semibold, design: .rounded))
+                            .foregroundColor(Theme.Colors.primaryText)
+                    }
+                    .tint(.green)
+                    .padding(.horizontal, Theme.Spacing.medium)
+                    .padding(.bottom, 14)
+                }
+                
+                Divider().padding(.leading, Theme.Spacing.medium)
+                
                 Button(action: { showAboutSheet = true }) {
                     ProfileSettingsRow(icon: "info.circle.fill", title: "About AlgoLens", subtitle: "Version 1.0", color: .blue)
                 }
