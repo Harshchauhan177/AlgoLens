@@ -171,62 +171,102 @@ struct SearchBar: View {
 // MARK: - Enhanced Category Card with Premium Design
 struct EnhancedCategoryCard: View {
     let category: AlgorithmCategory
-    @State private var isHovered = false
+    @State private var appeared = false
+    @State private var shimmerOffset: CGFloat = -200
+    @State private var iconBounce = false
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 14) {
-            // Icon with gradient background + decorative ring
-            ZStack {
-                // Outer decorative ring
-                Circle()
-                    .stroke(
-                        LinearGradient(
-                            colors: [
-                                categoryColor.opacity(0.3),
-                                categoryColor.opacity(0.08)
-                            ],
-                            startPoint: .topLeading,
-                            endPoint: .bottomTrailing
-                        ),
-                        lineWidth: 2
-                    )
-                    .frame(width: 68, height: 68)
-                
-                Circle()
-                    .fill(
-                        LinearGradient(
-                            colors: [
-                                categoryColor.opacity(0.18),
-                                categoryColor.opacity(0.08)
-                            ],
-                            startPoint: .topLeading,
-                            endPoint: .bottomTrailing
+        VStack(alignment: .leading, spacing: 16) {
+            // Top Row: Icon + Decorative dots
+            HStack(alignment: .top) {
+                // Animated icon with layered rings
+                ZStack {
+                    // Rotating angular gradient ring
+                    Circle()
+                        .stroke(
+                            AngularGradient(
+                                colors: [
+                                    categoryColor.opacity(0.4),
+                                    categoryColor.opacity(0.08),
+                                    categoryColor.opacity(0.3),
+                                    categoryColor.opacity(0.05),
+                                    categoryColor.opacity(0.4)
+                                ],
+                                center: .center
+                            ),
+                            lineWidth: 2.5
                         )
-                    )
-                    .frame(width: 58, height: 58)
-                
-                Image(systemName: category.icon)
-                    .font(.system(size: 26, weight: .semibold))
-                    .foregroundStyle(
-                        LinearGradient(
-                            colors: [categoryColor, categoryColor.opacity(0.7)],
-                            startPoint: .topLeading,
-                            endPoint: .bottomTrailing
+                        .frame(width: 68, height: 68)
+                        .rotationEffect(.degrees(appeared ? 360 : 0))
+                        .animation(
+                            .linear(duration: 12).repeatForever(autoreverses: false),
+                            value: appeared
                         )
-                    )
+                    
+                    // Inner radial glow
+                    Circle()
+                        .fill(
+                            RadialGradient(
+                                colors: [
+                                    categoryColor.opacity(0.22),
+                                    categoryColor.opacity(0.06)
+                                ],
+                                center: .center,
+                                startRadius: 0,
+                                endRadius: 30
+                            )
+                        )
+                        .frame(width: 56, height: 56)
+                    
+                    Image(systemName: category.icon)
+                        .font(.system(size: 26, weight: .bold))
+                        .foregroundStyle(
+                            LinearGradient(
+                                colors: [categoryColor, categoryColor.opacity(0.65)],
+                                startPoint: .topLeading,
+                                endPoint: .bottomTrailing
+                            )
+                        )
+                        .scaleEffect(iconBounce ? 1.12 : 1.0)
+                        .animation(
+                            .spring(response: 0.4, dampingFraction: 0.5),
+                            value: iconBounce
+                        )
+                }
+                .onAppear {
+                    appeared = true
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                        iconBounce = true
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                            iconBounce = false
+                        }
+                    }
+                }
+                
+                Spacer()
+                
+                // Decorative floating dots
+                VStack(spacing: 4) {
+                    ForEach(0..<3, id: \.self) { i in
+                        Circle()
+                            .fill(categoryColor.opacity(0.15 + Double(i) * 0.1))
+                            .frame(width: 6 - CGFloat(i), height: 6 - CGFloat(i))
+                    }
+                }
+                .padding(.top, 6)
             }
             
             // Text Content
-            VStack(alignment: .leading, spacing: 6) {
+            VStack(alignment: .leading, spacing: 7) {
                 Text(category.name)
-                    .font(.system(size: 16, weight: .bold, design: .rounded))
+                    .font(.system(size: 17, weight: .heavy, design: .rounded))
                     .foregroundColor(Theme.Colors.primaryText)
                     .lineLimit(2)
                     .minimumScaleFactor(0.85)
                     .multilineTextAlignment(.leading)
                 
                 Text(category.description)
-                    .font(.system(size: 12, weight: .medium))
+                    .font(.system(size: 12, weight: .medium, design: .rounded))
                     .foregroundColor(Theme.Colors.secondaryText)
                     .lineLimit(2)
                     .minimumScaleFactor(0.9)
@@ -235,51 +275,104 @@ struct EnhancedCategoryCard: View {
             
             Spacer(minLength: 0)
             
-            // Pill-shaped "Explore" button
-            HStack(spacing: 6) {
-                Text("Explore")
-                    .font(.system(size: 12, weight: .bold, design: .rounded))
+            // Filled capsule "Explore" CTA
+            HStack(spacing: 0) {
+                HStack(spacing: 6) {
+                    Text("Explore")
+                        .font(.system(size: 12, weight: .bold, design: .rounded))
+                    
+                    Image(systemName: "arrow.right")
+                        .font(.system(size: 10, weight: .heavy))
+                }
+                .foregroundColor(.white)
+                .padding(.horizontal, 14)
+                .padding(.vertical, 7)
+                .background(
+                    Capsule()
+                        .fill(
+                            LinearGradient(
+                                colors: [categoryColor, categoryColor.opacity(0.75)],
+                                startPoint: .leading,
+                                endPoint: .trailing
+                            )
+                        )
+                )
+                .shadow(color: categoryColor.opacity(0.35), radius: 6, x: 0, y: 3)
                 
-                Image(systemName: "arrow.right")
-                    .font(.system(size: 10, weight: .bold))
+                Spacer()
             }
-            .foregroundColor(categoryColor)
-            .padding(.horizontal, 14)
-            .padding(.vertical, 7)
-            .background(
-                Capsule()
-                    .fill(categoryColor.opacity(0.12))
-            )
-            .overlay(
-                Capsule()
-                    .stroke(categoryColor.opacity(0.2), lineWidth: 1)
-            )
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(18)
         .background(
             ZStack {
-                // Base card background (dark mode aware)
+                // Frosted glass base
                 RoundedRectangle(cornerRadius: Theme.CornerRadius.large + 4)
-                    .fill(Theme.Colors.cardBackground)
+                    .fill(.ultraThinMaterial)
                 
-                // Decorative blob in top-right corner
+                // Subtle gradient tint
+                RoundedRectangle(cornerRadius: Theme.CornerRadius.large + 4)
+                    .fill(
+                        LinearGradient(
+                            colors: [
+                                categoryColor.opacity(0.05),
+                                Color.clear,
+                                categoryColor.opacity(0.03)
+                            ],
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        )
+                    )
+                
+                // Decorative blob top-right
                 Circle()
-                    .fill(categoryColor.opacity(0.06))
+                    .fill(
+                        RadialGradient(
+                            colors: [categoryColor.opacity(0.1), Color.clear],
+                            center: .center,
+                            startRadius: 0,
+                            endRadius: 60
+                        )
+                    )
                     .frame(width: 100, height: 100)
                     .offset(x: 50, y: -40)
-                    .clipped()
                 
-                // Subtle gradient overlay from category color
-                LinearGradient(
-                    colors: [
-                        categoryColor.opacity(0.04),
-                        Color.clear,
-                        Color.clear
-                    ],
-                    startPoint: .topLeading,
-                    endPoint: .bottomTrailing
-                )
+                // Decorative blob bottom-left
+                Circle()
+                    .fill(
+                        RadialGradient(
+                            colors: [categoryColor.opacity(0.06), Color.clear],
+                            center: .center,
+                            startRadius: 0,
+                            endRadius: 40
+                        )
+                    )
+                    .frame(width: 70, height: 70)
+                    .offset(x: -35, y: 50)
+                
+                // Shimmer sweep
+                RoundedRectangle(cornerRadius: Theme.CornerRadius.large + 4)
+                    .fill(
+                        LinearGradient(
+                            colors: [
+                                Color.clear,
+                                Color.white.opacity(0.06),
+                                Color.clear
+                            ],
+                            startPoint: .leading,
+                            endPoint: .trailing
+                        )
+                    )
+                    .offset(x: shimmerOffset)
+                    .onAppear {
+                        withAnimation(
+                            .easeInOut(duration: 3)
+                            .repeatForever(autoreverses: false)
+                            .delay(1)
+                        ) {
+                            shimmerOffset = 250
+                        }
+                    }
             }
         )
         .clipShape(RoundedRectangle(cornerRadius: Theme.CornerRadius.large + 4))
@@ -288,17 +381,19 @@ struct EnhancedCategoryCard: View {
                 .stroke(
                     LinearGradient(
                         colors: [
-                            categoryColor.opacity(0.25),
-                            categoryColor.opacity(0.08)
+                            categoryColor.opacity(0.35),
+                            categoryColor.opacity(0.08),
+                            Color.white.opacity(0.15),
+                            categoryColor.opacity(0.12)
                         ],
                         startPoint: .topLeading,
                         endPoint: .bottomTrailing
                     ),
-                    lineWidth: 1
+                    lineWidth: 1.2
                 )
         )
-        .shadow(color: categoryColor.opacity(0.12), radius: 16, x: 0, y: 8)
-        .shadow(color: Color.black.opacity(0.04), radius: 4, x: 0, y: 2)
+        .shadow(color: categoryColor.opacity(0.18), radius: 18, x: 0, y: 8)
+        .shadow(color: Color.black.opacity(0.05), radius: 5, x: 0, y: 2)
     }
     
     private var categoryColor: Color {

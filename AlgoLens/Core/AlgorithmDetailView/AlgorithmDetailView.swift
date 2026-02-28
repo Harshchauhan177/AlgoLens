@@ -234,14 +234,16 @@ struct EnhancedTabButton: View {
     let isSelected: Bool
     let action: () -> Void
     
+    @State private var shimmerOffset: CGFloat = -150
+    
     var body: some View {
         Button(action: action) {
             VStack(spacing: 6) {
                 Image(systemName: tab.icon)
-                    .font(.system(size: 18, weight: .semibold))
+                    .font(.system(size: 18, weight: .bold))
                 
                 Text(tab.rawValue)
-                    .font(.system(size: 12, weight: isSelected ? .bold : .medium, design: .rounded))
+                    .font(.system(size: 12, weight: isSelected ? .bold : .semibold, design: .rounded))
             }
             .foregroundColor(isSelected ? .white : Theme.Colors.secondaryText)
             .padding(.horizontal, Theme.Spacing.medium + 2)
@@ -250,21 +252,59 @@ struct EnhancedTabButton: View {
                 ZStack {
                     if isSelected {
                         LinearGradient(
-                            colors: [Color.blue, Color.blue.opacity(0.8)],
-                            startPoint: .top,
-                            endPoint: .bottom
+                            colors: [
+                                Color(red: 0.3, green: 0.4, blue: 0.9),
+                                Color(red: 0.5, green: 0.3, blue: 0.9)
+                            ],
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
                         )
+                        
+                        // Shimmer on selected tab
+                        RoundedRectangle(cornerRadius: Theme.CornerRadius.medium)
+                            .fill(
+                                LinearGradient(
+                                    colors: [Color.clear, Color.white.opacity(0.15), Color.clear],
+                                    startPoint: .leading,
+                                    endPoint: .trailing
+                                )
+                            )
+                            .offset(x: shimmerOffset)
+                            .onAppear {
+                                shimmerOffset = -150
+                                withAnimation(
+                                    .easeInOut(duration: 2.5)
+                                    .repeatForever(autoreverses: false)
+                                    .delay(0.5)
+                                ) {
+                                    shimmerOffset = 150
+                                }
+                            }
                     } else {
-                        Color(.systemBackground).opacity(0.6)
+                        RoundedRectangle(cornerRadius: Theme.CornerRadius.medium)
+                            .fill(.ultraThinMaterial)
                     }
                 }
             )
-            .cornerRadius(Theme.CornerRadius.medium)
+            .clipShape(RoundedRectangle(cornerRadius: Theme.CornerRadius.medium))
             .overlay(
                 RoundedRectangle(cornerRadius: Theme.CornerRadius.medium)
-                    .stroke(isSelected ? Color.clear : Color.gray.opacity(0.2), lineWidth: 1)
+                    .stroke(
+                        isSelected
+                            ? LinearGradient(
+                                colors: [Color.white.opacity(0.3), Color.clear],
+                                startPoint: .topLeading,
+                                endPoint: .bottomTrailing
+                              )
+                            : LinearGradient(
+                                colors: [Color.gray.opacity(0.15), Color.gray.opacity(0.08)],
+                                startPoint: .topLeading,
+                                endPoint: .bottomTrailing
+                              ),
+                        lineWidth: 1
+                    )
             )
-            .shadow(color: isSelected ? Color.blue.opacity(0.3) : Color.black.opacity(0.05), radius: isSelected ? 8 : 4, x: 0, y: isSelected ? 4 : 2)
+            .shadow(color: isSelected ? Color.blue.opacity(0.35) : Color.black.opacity(0.04), radius: isSelected ? 10 : 4, x: 0, y: isSelected ? 5 : 2)
         }
         .scaleEffect(isSelected ? 1.0 : 0.95)
         .animation(.spring(response: 0.3, dampingFraction: 0.7), value: isSelected)

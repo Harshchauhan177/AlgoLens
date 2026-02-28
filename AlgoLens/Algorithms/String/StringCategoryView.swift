@@ -15,7 +15,7 @@ struct StringAlgorithmsView: View {
             title: "String Algorithms",
             subtitle: "Master pattern matching and string manipulation",
             algorithms: viewModel.algorithms,
-            accentColor: .teal
+            accentColor: .orange
         )
     }
 }

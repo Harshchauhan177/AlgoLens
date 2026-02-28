@@ -57,7 +57,7 @@ extension AlgorithmCategory {
             name: "Dynamic Programming",
             description: "Knapsack, LCS, Matrix Chain Multiplication",
             icon: "memorychip.fill",
-            color: .yellow
+            color: .indigo
         )
     ]
 }

@@ -220,24 +220,56 @@ struct FeaturePreviewCard: View {
     let description: String
     let color: Color
     
+    @State private var appeared = false
+    @State private var shimmerOffset: CGFloat = -300
+    
     var body: some View {
         HStack(spacing: Theme.Spacing.medium) {
-            // Icon
+            // Icon with animated ring
             ZStack {
                 Circle()
+                    .stroke(
+                        AngularGradient(
+                            colors: [
+                                color.opacity(0.35),
+                                color.opacity(0.08),
+                                color.opacity(0.25),
+                                color.opacity(0.05),
+                                color.opacity(0.35)
+                            ],
+                            center: .center
+                        ),
+                        lineWidth: 2
+                    )
+                    .frame(width: 54, height: 54)
+                    .rotationEffect(.degrees(appeared ? 360 : 0))
+                    .animation(
+                        .linear(duration: 14).repeatForever(autoreverses: false),
+                        value: appeared
+                    )
+                
+                Circle()
                     .fill(
+                        RadialGradient(
+                            colors: [color.opacity(0.2), color.opacity(0.05)],
+                            center: .center,
+                            startRadius: 0,
+                            endRadius: 22
+                        )
+                    )
+                    .frame(width: 44, height: 44)
+                
+                Image(systemName: icon)
+                    .font(.system(size: 22, weight: .bold))
+                    .foregroundStyle(
                         LinearGradient(
-                            colors: [color.opacity(0.15), color.opacity(0.25)],
+                            colors: [color, color.opacity(0.6)],
                             startPoint: .topLeading,
                             endPoint: .bottomTrailing
                         )
                     )
-                    .frame(width: 50, height: 50)
-                
-                Image(systemName: icon)
-                    .font(.system(size: 22, weight: .semibold))
-                    .foregroundColor(color)
             }
+            .onAppear { appeared = true }
             
             // Content
             VStack(alignment: .leading, spacing: 4) {
@@ -246,7 +278,7 @@ struct FeaturePreviewCard: View {
                     .foregroundColor(Theme.Colors.primaryText)
                 
                 Text(description)
-                    .font(.system(size: 13, weight: .medium))
+                    .font(.system(size: 13, weight: .medium, design: .rounded))
                     .foregroundColor(Theme.Colors.secondaryText)
                     .lineLimit(2)
             }
@@ -254,14 +286,77 @@ struct FeaturePreviewCard: View {
             Spacer()
         }
         .padding(Theme.Spacing.medium)
-        .background(Color(.systemBackground).opacity(0.9))
-        .cornerRadius(Theme.CornerRadius.large)
+        .background(
+            ZStack {
+                RoundedRectangle(cornerRadius: Theme.CornerRadius.large)
+                    .fill(.ultraThinMaterial)
+                
+                RoundedRectangle(cornerRadius: Theme.CornerRadius.large)
+                    .fill(
+                        LinearGradient(
+                            colors: [
+                                color.opacity(0.04),
+                                Color.clear,
+                                color.opacity(0.02)
+                            ],
+                            startPoint: .leading,
+                            endPoint: .trailing
+                        )
+                    )
+                
+                // Decorative blob
+                Circle()
+                    .fill(
+                        RadialGradient(
+                            colors: [color.opacity(0.08), Color.clear],
+                            center: .center,
+                            startRadius: 0,
+                            endRadius: 45
+                        )
+                    )
+                    .frame(width: 70, height: 70)
+                    .offset(x: 130, y: -25)
+                
+                // Shimmer
+                RoundedRectangle(cornerRadius: Theme.CornerRadius.large)
+                    .fill(
+                        LinearGradient(
+                            colors: [Color.clear, Color.white.opacity(0.05), Color.clear],
+                            startPoint: .leading,
+                            endPoint: .trailing
+                        )
+                    )
+                    .offset(x: shimmerOffset)
+                    .onAppear {
+                        withAnimation(
+                            .easeInOut(duration: 3.5)
+                            .repeatForever(autoreverses: false)
+                            .delay(1.5)
+                        ) {
+                            shimmerOffset = 400
+                        }
+                    }
+            }
+        )
+        .clipShape(RoundedRectangle(cornerRadius: Theme.CornerRadius.large))
         .overlay(
             RoundedRectangle(cornerRadius: Theme.CornerRadius.large)
-                .stroke(color.opacity(0.15), lineWidth: 1.5)
+                .stroke(
+                    LinearGradient(
+                        colors: [
+                            color.opacity(0.25),
+                            color.opacity(0.06),
+                            Color.white.opacity(0.1),
+                            color.opacity(0.08)
+                        ],
+                        startPoint: .topLeading,
+                        endPoint: .bottomTrailing
+                    ),
+                    lineWidth: 1
+                )
         )
-        .shadow(color: color.opacity(0.1), radius: 10, x: 0, y: 5)
-        .shadow(color: Color.black.opacity(0.05), radius: 4, x: 0, y: 2)
+        .shadow(color: color.opacity(0.12), radius: 12, x: 0, y: 6)
+        .shadow(color: Color.black.opacity(0.04), radius: 4, x: 0, y: 2)
     }
 }
 

@@ -15,7 +15,7 @@ struct DPAlgorithmsView: View {
             title: "Dynamic Programming",
             subtitle: "Learn optimal substructure and memoization",
             algorithms: viewModel.algorithms,
-            accentColor: .yellow
+            accentColor: .indigo
         )
     }
 }
